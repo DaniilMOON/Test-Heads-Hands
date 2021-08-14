@@ -37,7 +37,7 @@ public class Application {
             this.array[numLineInArray] = new int[curSizeLine];
             this.sizeLineInArray[numLineInArray] = curSizeLine;
             for (int j = 0; j < curSizeLine; j++) {
-                int minValue = Integer.MIN_VALUE % 10, maxValue = Integer.MAX_VALUE % 100;
+                int minValue = Integer.MIN_VALUE, maxValue = Integer.MAX_VALUE;
                 this.array[numLineInArray][j] = ThreadLocalRandom.current().nextInt(minValue, maxValue);
             }
             numLineInArray++;

@@ -1,27 +1,101 @@
-import java.util.Arrays;
+import java.util.HashSet;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Application {
+    int sizeArray;
+    int[][] array;
+    int[] sizeLineInArray;
 
     Application(int n) {
-        int[][] array = new int[n][];
-        boolean[] usedSizeLine = new boolean[n];
-        Arrays.fill(usedSizeLine, false);
-        int minSize = 0, maxSize = n;
+        setSizeArray(n);
+        setArrayFirst(new int[sizeArray][]);
+        setSizeLine(new int[sizeArray]);
 
-        for (int i = 0; i < n; i++) {
-            int sizeLineArray;
-            do {
-                sizeLineArray= ThreadLocalRandom.current().nextInt(minSize, maxSize);
-            } while (usedSizeLine[sizeLineArray]);
-            usedSizeLine[sizeLineArray] = true;
+        HashSet<Integer> sizeLineInArray = new HashSet<>();
+        int minSizeLine = 1, maxSizeLine = 2 * sizeArray;
+        while (sizeLineInArray.size() != sizeArray) {
+            sizeLineInArray.add(ThreadLocalRandom.current().nextInt(minSizeLine, maxSizeLine));
+        }
+        setArraySecond(sizeLineInArray);
+    }
 
-            array[i] = new int[sizeLineArray + 1];
-            for (int j = 0; j < sizeLineArray; j++) {
-                int minValue = Integer.MIN_VALUE, maxValue = Integer.MAX_VALUE;
-                array[i][j] = ThreadLocalRandom.current().nextInt(minValue, maxValue) + 1;
+    public void setSizeArray(int sizeArray) {
+        this.sizeArray = sizeArray;
+    }
+
+    public void setArrayFirst(int[][] array) {
+        this.array = array;
+    }
+
+    public void setSizeLine(int[] sizeLineInArray) {
+        this.sizeLineInArray = sizeLineInArray;
+    }
+
+    public void setArraySecond(HashSet<Integer> sizeLineInArray) {
+        int numLineInArray = 0;
+        for (int curSizeLine : sizeLineInArray) {
+            this.array[numLineInArray] = new int[curSizeLine];
+            this.sizeLineInArray[numLineInArray] = curSizeLine;
+            for (int j = 0; j < curSizeLine; j++) {
+                int minValue = Integer.MIN_VALUE % 10, maxValue = Integer.MAX_VALUE % 100;
+                this.array[numLineInArray][j] = ThreadLocalRandom.current().nextInt(minValue, maxValue);
+            }
+            numLineInArray++;
+        }
+    }
+
+    public int getSizeArray() {
+        return sizeArray;
+    }
+
+    public int[][] getArray() {
+        return array;
+    }
+
+    public int[] getSizeLine() {
+        return sizeLineInArray;
+    }
+
+    public void sortArray(int sizeArray, int[] sizeLineInArray, int[][] array) {
+        for (int i = 0; i < sizeArray; i++) {
+            quickSort(0, sizeLineInArray[i] - 1, array[i]);
+            if (i % 2 == 1) {
+                for (int j = 0; j < sizeLineInArray[i] / 2; j++) {
+                    int tmp = array[i][j];
+                    array[i][j] = array[i][sizeLineInArray[i] - 1 - j];
+                    array[i][sizeLineInArray[i] - 1 - j] = tmp;
+                }
             }
         }
-        System.out.println("successfully");
+    }
+
+    public void quickSort(int left, int right, int[] a) {
+        int first = left;
+        int last = right;
+        int center = a[(left + right) / 2];
+        do {
+            while (a[first] < center) {
+                first++;
+            }
+            while (a[last] > center) {
+                last--;
+            }
+            if (first <= last) {
+                if (first < last) {
+                    int temp = a[first];
+                    a[first] = a[last];
+                    a[last] = temp;
+                }
+                first++;
+                last--;
+            }
+        } while (first <= last);
+
+        if (left < last) {
+            quickSort(left, last, a);
+        }
+        if (right > first) {
+            quickSort(first, right, a);
+        }
     }
 }

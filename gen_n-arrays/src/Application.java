@@ -19,16 +19,8 @@ public class Application {
         setArraySecond(sizeLineInArray);
     }
 
-    public void setSizeArray(int sizeArray) {
-        this.sizeArray = sizeArray;
-    }
-
     public void setArrayFirst(int[][] array) {
         this.array = array;
-    }
-
-    public void setSizeLine(int[] sizeLineInArray) {
-        this.sizeLineInArray = sizeLineInArray;
     }
 
     public void setArraySecond(HashSet<Integer> sizeLineInArray) {
@@ -48,12 +40,20 @@ public class Application {
         return sizeArray;
     }
 
+    public void setSizeArray(int sizeArray) {
+        this.sizeArray = sizeArray;
+    }
+
     public int[][] getArray() {
         return array;
     }
 
     public int[] getSizeLine() {
         return sizeLineInArray;
+    }
+
+    public void setSizeLine(int[] sizeLineInArray) {
+        this.sizeLineInArray = sizeLineInArray;
     }
 
     public void sortArray(int sizeArray, int[] sizeLineInArray, int[][] array) {

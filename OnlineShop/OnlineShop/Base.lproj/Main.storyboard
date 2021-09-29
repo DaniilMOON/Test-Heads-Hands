@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="Main" id="BYZ-38-t0r" customClass="ViewController" customModule="OnlineShop" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="hen-Mj-eiK">
+                                <rect key="frame" x="20" y="299" width="374" height="308"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Srj-Kg-XPU" userLabel="Login" customClass="TextInput" customModule="OnlineShop" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="60"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p8U-G2-MDq" userLabel="Password" customClass="TextInput" customModule="OnlineShop" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="72" width="374" height="180"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JYQ-He-vnE" customClass="LoadingButton" customModule="OnlineShop" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="264" width="374" height="44"/>
+                                        <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="Kwl-eQ-0Xx"/>
+                                        </constraints>
+                                        <state key="normal" title="Sign in">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="signInButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0vm-Wg-Ttk"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Srj-Kg-XPU" firstAttribute="trailing" secondItem="p8U-G2-MDq" secondAttribute="trailing" id="St1-6q-LGC"/>
+                                    <constraint firstItem="JYQ-He-vnE" firstAttribute="leading" secondItem="p8U-G2-MDq" secondAttribute="leading" id="Xau-HX-JWU"/>
+                                    <constraint firstItem="p8U-G2-MDq" firstAttribute="trailing" secondItem="hen-Mj-eiK" secondAttribute="trailingMargin" id="ZdD-e3-dHp"/>
+                                    <constraint firstItem="JYQ-He-vnE" firstAttribute="trailing" secondItem="p8U-G2-MDq" secondAttribute="trailing" id="fAb-hC-AJE"/>
+                                    <constraint firstItem="Srj-Kg-XPU" firstAttribute="leading" secondItem="p8U-G2-MDq" secondAttribute="leading" id="hC2-0G-wnR"/>
+                                    <constraint firstItem="p8U-G2-MDq" firstAttribute="leading" secondItem="hen-Mj-eiK" secondAttribute="leadingMargin" id="wkR-vS-LYI"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="hen-Mj-eiK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="3EM-gp-gyq"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hen-Mj-eiK" secondAttribute="trailing" constant="20" id="ZgX-Ri-HDL"/>
+                            <constraint firstItem="hen-Mj-eiK" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="d83-48-65U"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="loginView" destination="Srj-Kg-XPU" id="hmx-WS-DDc"/>
+                        <outlet property="passwordView" destination="p8U-G2-MDq" id="SmQ-TW-dc7"/>
+                        <outlet property="signInOutlet" destination="JYQ-He-vnE" id="FtU-mg-hEI"/>
+                        <outlet property="stackView" destination="hen-Mj-eiK" id="PS7-TK-yiD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="95.652173913043484" y="118.52678571428571"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

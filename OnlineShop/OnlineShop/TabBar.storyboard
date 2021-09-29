@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Catalog-->
+        <scene sceneID="SOG-cN-Dqy">
+            <objects>
+                <viewController id="WPk-pl-WfK" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QSb-3x-XRX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="HJC-va-eG1"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Catalog" image="list.dash" catalog="system" id="LPm-0c-11p"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GBs-pN-lnT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1821.7391304347827" y="-565.17857142857144"/>
+        </scene>
+        <!--Cart-->
+        <scene sceneID="8Kh-UK-QZU">
+            <objects>
+                <viewController id="nAQ-5V-50G" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tpp-QU-bXD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="bpU-ij-JLD"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Cart" image="cart" catalog="system" id="13C-lT-bPT"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gvJ-Do-iuR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1823.1884057971015" y="112.5"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="ecY-rI-Q7Z">
+            <objects>
+                <viewController id="3Al-AM-XER" customClass="CartViewController" customModule="OnlineShop" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CR0-5h-K7Y">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gON-CU-zlu" userLabel="Sign out">
+                                <rect key="frame" x="294" y="303" width="100" height="100"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="9dM-nu-11b"/>
+                                    <constraint firstAttribute="width" constant="100" id="dig-hV-Ez6"/>
+                                </constraints>
+                                <state key="normal" title="Sign out">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="signOutButton:" destination="3Al-AM-XER" eventType="touchUpInside" id="ffK-cV-o6j"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="VCK-VR-lQB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="gON-CU-zlu" firstAttribute="top" secondItem="VCK-VR-lQB" secondAttribute="top" constant="259" id="ZYt-RV-cpW"/>
+                            <constraint firstItem="VCK-VR-lQB" firstAttribute="trailing" secondItem="gON-CU-zlu" secondAttribute="trailing" constant="20" id="Zh4-EP-EzC"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Profile" image="person" catalog="system" id="skJ-7Z-OO8"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PWV-8W-EH1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1821.7391304347827" y="787.5"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="88n-ay-t7G">
+            <objects>
+                <tabBarController storyboardIdentifier="TabBar" automaticallyAdjustsScrollViewInsets="NO" id="sAe-Rd-LFA" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jVQ-cW-Ho4">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="WPk-pl-WfK" kind="relationship" relationship="viewControllers" id="vPV-ch-uId"/>
+                        <segue destination="nAQ-5V-50G" kind="relationship" relationship="viewControllers" id="5o6-Io-vub"/>
+                        <segue destination="3Al-AM-XER" kind="relationship" relationship="viewControllers" id="vkB-wD-1dv"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UXG-wR-pUK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="911.59420289855075" y="111.16071428571428"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="cart" catalog="system" width="128" height="102"/>
+        <image name="list.dash" catalog="system" width="128" height="85"/>
+        <image name="person" catalog="system" width="128" height="117"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

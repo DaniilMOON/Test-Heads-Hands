@@ -59,15 +59,25 @@ class ViewController: UIViewController {
         return ""
     }
     
+    var kolClick = 0
     @IBAction func signInButton(_ sender: Any) {
-        signInOutlet.animateButton(shouldLoad: true)
-        loginView.setError(errorAdd: validLogin(str: loginView.getTextInTextField() ?? ""))
-        passwordView.setError(errorAdd: validPassword(str: passwordView.getTextInTextField() ?? ""))
-        let seconds = 4.0
-        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
-            self.signInOutlet.animateButton(shouldLoad: false)
+        if kolClick == 0 {
+            signInOutlet.animateButton(shouldLoad: true)
+            loginView.setError(errorAdd: validLogin(str: loginView.getTextInTextField() ?? ""))
+            passwordView.setError(errorAdd: validPassword(str: passwordView.getTextInTextField() ?? ""))
+            let seconds = 4.0
+            DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+                self.signInOutlet.animateButton(shouldLoad: false)
+            }
+            kolClick += 1
+        } else {
+            signInOutlet.animateButton(shouldLoad: true)
+            let window = UIApplication.shared.windows.first{
+                $0.isKeyWindow
+            }
+            let vs = UIStoryboard(name: "TabBar", bundle: nil).instantiateViewController(identifier: "TabBar")
+            window?.rootViewController = vs
         }
-        
     }
     
 }

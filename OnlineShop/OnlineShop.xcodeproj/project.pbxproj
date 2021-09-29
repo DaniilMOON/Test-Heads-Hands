@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED79DAE6270460F80062FA4E /* TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED79DAE5270460F80062FA4E /* TabBar.storyboard */; };
+		ED79DAE827047B2C0062FA4E /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED79DAE727047B2C0062FA4E /* CartViewController.swift */; };
 		EDA4735D2703A1C600A30763 /* TextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4735A2703A1C600A30763 /* TextInput.swift */; };
 		EDA4735E2703A1C600A30763 /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4735B2703A1C600A30763 /* LoadingButton.swift */; };
 		EDA4735F2703A1C600A30763 /* TextInput.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDA4735C2703A1C600A30763 /* TextInput.xib */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ED79DAE5270460F80062FA4E /* TabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TabBar.storyboard; sourceTree = "<group>"; };
+		ED79DAE727047B2C0062FA4E /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		EDA4735A2703A1C600A30763 /* TextInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInput.swift; sourceTree = "<group>"; };
 		EDA4735B2703A1C600A30763 /* LoadingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
 		EDA4735C2703A1C600A30763 /* TextInput.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextInput.xib; sourceTree = "<group>"; };
@@ -69,6 +73,8 @@
 				EDEE08A52701B87400182BAA /* Assets.xcassets */,
 				EDEE08A72701B87400182BAA /* LaunchScreen.storyboard */,
 				EDEE08AA2701B87400182BAA /* Info.plist */,
+				ED79DAE5270460F80062FA4E /* TabBar.storyboard */,
+				ED79DAE727047B2C0062FA4E /* CartViewController.swift */,
 			);
 			path = OnlineShop;
 			sourceTree = "<group>";
@@ -130,6 +136,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED79DAE6270460F80062FA4E /* TabBar.storyboard in Resources */,
 				EDEE08A92701B87400182BAA /* LaunchScreen.storyboard in Resources */,
 				EDEE08A62701B87400182BAA /* Assets.xcassets in Resources */,
 				EDEE08A42701B86F00182BAA /* Main.storyboard in Resources */,
@@ -146,6 +153,7 @@
 			files = (
 				EDA4735E2703A1C600A30763 /* LoadingButton.swift in Sources */,
 				EDEE08A12701B86F00182BAA /* ViewController.swift in Sources */,
+				ED79DAE827047B2C0062FA4E /* CartViewController.swift in Sources */,
 				EDEE089D2701B86F00182BAA /* AppDelegate.swift in Sources */,
 				EDA4735D2703A1C600A30763 /* TextInput.swift in Sources */,
 			);

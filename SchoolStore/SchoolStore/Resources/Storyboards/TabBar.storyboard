@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="F1R-rg-emb">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--History-->
+        <scene sceneID="gEL-vK-Wba">
+            <objects>
+                <viewControllerPlaceholder storyboardName="History" id="WEQ-Mm-SLK" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="A8X-RZ-pps"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tlq-yl-fhl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1677.536231884058" y="-2.6785714285714284"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="3XP-VE-NNs">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" id="ncl-bT-TgR" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="4fZ-0E-mwZ"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ixa-mR-fN4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1677.536231884058" y="46.205357142857139"/>
+        </scene>
+        <!--Catalog-->
+        <scene sceneID="KyS-Ov-YiH">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Catalog" id="ikN-DQ-G5e" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="ZgH-ZU-17o"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tcr-wh-rgx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1677.536231884058" y="-66.964285714285708"/>
+        </scene>
+        <!--Tab BarVC-->
+        <scene sceneID="Wp9-SV-3i7">
+            <objects>
+                <tabBarController storyboardIdentifier="TabBar" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="F1R-rg-emb" customClass="TabBarVC" customModule="SchoolStore" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lbJ-VJ-vRw">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="ikN-DQ-G5e" kind="relationship" relationship="viewControllers" id="i7p-wS-psW"/>
+                        <segue destination="WEQ-Mm-SLK" kind="relationship" relationship="viewControllers" id="vUA-A8-qjK"/>
+                        <segue destination="ncl-bT-TgR" kind="relationship" relationship="viewControllers" id="51t-Vp-Ap4"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CsU-hl-2hG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="794" y="3"/>
+        </scene>
+    </scenes>
+</document>

@@ -7,3 +7,6 @@
 "common.emptyField" = "Поле пустое";
 
 "product.buy" = "Купить";
+
+"history.segmentedControl.all" = "ВСЕ";
+"history.segmentedControl.active" = "АКТИВНЫЕ";

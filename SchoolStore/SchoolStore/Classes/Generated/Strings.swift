@@ -31,6 +31,15 @@ internal enum L10n {
     internal static let error = L10n.tr("Localizable", "common.error")
   }
 
+  internal enum History {
+    internal enum SegmentedControl {
+      /// АКТИВНЫЕ
+      internal static let active = L10n.tr("Localizable", "history.segmentedControl.active")
+      /// ВСЕ
+      internal static let all = L10n.tr("Localizable", "history.segmentedControl.all")
+    }
+  }
+
   internal enum Product {
     /// Купить
     internal static let buy = L10n.tr("Localizable", "product.buy")

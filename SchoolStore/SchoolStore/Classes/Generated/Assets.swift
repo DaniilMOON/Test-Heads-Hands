@@ -26,6 +26,7 @@ internal enum Asset {
   internal static let fieldError = ColorAsset(name: "field.error")
   internal static let fieldText = ColorAsset(name: "field.text")
   internal static let main = ColorAsset(name: "main")
+  internal static let separator = ColorAsset(name: "separator")
   internal static let imagePlaceholder = ImageAsset(name: "ImagePlaceholder")
   internal static let fieldEye = ImageAsset(name: "field.eye")
   internal static let fieldEyeSlash = ImageAsset(name: "field.eye.slash")

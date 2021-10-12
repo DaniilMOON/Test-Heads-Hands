@@ -66,6 +66,7 @@ final class ProductCell: UITableViewCell {
     }()
 
     private func setup() {
+        selectionStyle = .none
         contentView.addSubview(contentImageView)
         contentView.addSubview(titleLabel)
         contentView.addSubview(descriptionLabel)
@@ -81,9 +82,13 @@ final class ProductCell: UITableViewCell {
         contentImageView.image = Asset.imagePlaceholder.image
         contentImageView.top(16).left(16).bottom(16).width(112).height(112)
 
+        titleLabel.lineBreakMode = .byWordWrapping
+        titleLabel.numberOfLines = 0
         titleLabel.top(16).left(to: .right(16), of: contentImageView).right(16)
 
         descriptionLabel.text = "Джерси"
+        descriptionLabel.lineBreakMode = .byWordWrapping
+        descriptionLabel.numberOfLines = 0
         descriptionLabel.top(to: .bottom, of: titleLabel).left(to: .right(16), of: contentImageView).right(16)
 
         priceLabel.text = "9000"
@@ -97,6 +102,6 @@ final class ProductCell: UITableViewCell {
         addToCartButton.top(to: .top, of: priceLabel).bottom(21).right(16)
 
         separatorView.bottom().left(16).right(16).height(1)
-        // separatorView.backgroundColor = Asset.accentColor.color
+        separatorView.backgroundColor = Asset.separator.color
     }
 }

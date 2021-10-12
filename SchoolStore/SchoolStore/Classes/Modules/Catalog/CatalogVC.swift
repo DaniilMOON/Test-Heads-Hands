@@ -7,7 +7,7 @@ import UIKit
 
 // MARK: - CatalogVC
 
-class CatalogVC: UIViewController {
+final class CatalogVC: UIViewController {
     // MARK: Lifecycle
 
     override func viewDidLoad() {

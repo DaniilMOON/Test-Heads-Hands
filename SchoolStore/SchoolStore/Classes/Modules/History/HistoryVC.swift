@@ -14,14 +14,8 @@ final class HistoryVC: UIViewController {
         super.viewDidLoad()
         view.addSubview(segmentedControl)
         view.addSubview(tableView)
-        segmentedControl.top(92).left().right()
+        segmentedControl.left().right().safeArea { $0.top() }
         tableView.top(to: .bottom, of: segmentedControl).left().right().bottom()
-
-        /* let stackView = UIStackView(arrangedSubviews: [segmentedControl, tableView])
-         stackView.translatesAutoresizingMaskIntoConstraints = false
-         view.addSubview(stackView)
-         stackView.axis = .vertical
-         stackView.centerY().right().bottom().left() */
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 0) { [weak self] in
             self?.items = [

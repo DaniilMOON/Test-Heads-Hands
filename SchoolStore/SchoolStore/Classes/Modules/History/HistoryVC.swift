@@ -105,4 +105,22 @@ extension HistoryVC: UITableViewDelegate, UITableViewDataSource {
         cell.model = items[indexPath.row]
         return cell
     }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let alertController = UIAlertController(title: L10n.History.DeleteOrder.answer, message: nil, preferredStyle: .alert)
+
+            let DeleteAction = UIAlertAction(title: L10n.History.DeleteOrder.yes, style: .default) { (_) -> Void in
+                self.items.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+
+            let CloseAction = UIAlertAction(title: L10n.History.DeleteOrder.no, style: .default) { (_) -> Void in }
+
+            alertController.addAction(DeleteAction)
+            alertController.addAction(CloseAction)
+
+            present(alertController, animated: true, completion: nil)
+        }
+    }
 }

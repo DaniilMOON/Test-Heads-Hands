@@ -32,6 +32,14 @@ internal enum L10n {
   }
 
   internal enum History {
+    internal enum DeleteOrder {
+      /// Вы точно хотите отменить заказ?
+      internal static let answer = L10n.tr("Localizable", "history.deleteOrder.answer")
+      /// Нет
+      internal static let no = L10n.tr("Localizable", "history.deleteOrder.no")
+      /// Да
+      internal static let yes = L10n.tr("Localizable", "history.deleteOrder.yes")
+    }
     internal enum SegmentedControl {
       /// АКТИВНЫЕ
       internal static let active = L10n.tr("Localizable", "history.segmentedControl.active")

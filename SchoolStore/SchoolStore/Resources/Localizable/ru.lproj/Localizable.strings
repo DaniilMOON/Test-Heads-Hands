@@ -10,3 +10,8 @@
 
 "history.segmentedControl.all" = "ВСЕ";
 "history.segmentedControl.active" = "АКТИВНЫЕ";
+
+"history.deleteOrder.answer" = "Вы точно хотите отменить заказ?";
+"history.deleteOrder.yes" = "Да";
+"history.deleteOrder.no" = "Нет";
+

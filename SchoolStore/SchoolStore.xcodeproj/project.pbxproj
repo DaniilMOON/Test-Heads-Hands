@@ -84,6 +84,8 @@
 		EDA1BFC32716ACBA004D2AAD /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EDA1BFB72716ACBA004D2AAD /* Roboto-Regular.ttf */; };
 		EDA1BFC42716ACBA004D2AAD /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EDA1BFB82716ACBA004D2AAD /* Roboto-LightItalic.ttf */; };
 		EDA1BFC62716ADEB004D2AAD /* CustomizeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA1BFC52716ADEB004D2AAD /* CustomizeLabel.swift */; };
+		EDA1BFCE271713CC004D2AAD /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA1BFCD271713CC004D2AAD /* Product.swift */; };
+		EDA1BFD02717186D004D2AAD /* CatalogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA1BFCF2717186D004D2AAD /* CatalogService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -162,6 +164,8 @@
 		EDA1BFB72716ACBA004D2AAD /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		EDA1BFB82716ACBA004D2AAD /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
 		EDA1BFC52716ADEB004D2AAD /* CustomizeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizeLabel.swift; sourceTree = "<group>"; };
+		EDA1BFCD271713CC004D2AAD /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		EDA1BFCF2717186D004D2AAD /* CatalogService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -337,6 +341,7 @@
 			children = (
 				C21E1356270463C400867E2E /* AuthService.swift */,
 				C21E1352270460AE00867E2E /* DataService.swift */,
+				EDA1BFCF2717186D004D2AAD /* CatalogService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -361,6 +366,7 @@
 				C21E13582704647800867E2E /* Errors.swift */,
 				C2D720A827048B1A00C40EA5 /* Profile.swift */,
 				C2B96D4A270DE0A00012D0E8 /* FieldError.swift */,
+				EDA1BFCD271713CC004D2AAD /* Product.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -633,6 +639,7 @@
 				C2D720A727048AF000C40EA5 /* AuthResponse.swift in Sources */,
 				C27E0F1D270473A20015530B /* Plist.swift in Sources */,
 				C21E13512704604400867E2E /* AppState.swift in Sources */,
+				EDA1BFD02717186D004D2AAD /* CatalogService.swift in Sources */,
 				C2D720A427048AAF00C40EA5 /* DataResponse.swift in Sources */,
 				C27E0F1E270473A20015530B /* Assets.swift in Sources */,
 				C2B96D49270DDE6F0012D0E8 /* ErrorResponse.swift in Sources */,
@@ -645,6 +652,7 @@
 				C21E1353270460AE00867E2E /* DataService.swift in Sources */,
 				C21E1357270463C400867E2E /* AuthService.swift in Sources */,
 				C2D7209F2704855100C40EA5 /* RequestBuilder.swift in Sources */,
+				EDA1BFCE271713CC004D2AAD /* Product.swift in Sources */,
 				C2D7209D270484E700C40EA5 /* RequestMethod.swift in Sources */,
 				C27E0F20270473A20015530B /* StoryboardScenes.swift in Sources */,
 				EDA1BFAB2715CB91004D2AAD /* HistoryCell.swift in Sources */,

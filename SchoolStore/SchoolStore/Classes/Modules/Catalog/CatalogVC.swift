@@ -17,11 +17,13 @@ final class CatalogVC: UIViewController {
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 0) { [weak self] in
             self?.items = [
-                "Nike1 Tampa Bay Buccaneers Super Bowl LV",
-                "Nike2 Tampa Bay Buccaneers Super Bowl LV",
-                "Nike3 Tampa Bay Buccaneers Super Bowl LV",
-                "Nike4 Tampa Bay Buccaneers Super Bowl LV",
-                "Nike5 Tampa Bay Buccaneers Super Bowl LV",
+                Product(
+                    id: "",
+                    title: "Men's Nike J.J. Watt Black Arizona Cardinals Legend Jersey",
+                    department: "Джерси",
+                    price: 9_000_000,
+                    preview: "https://fanatics.frgimages.com/FFImage/thumb.aspx?i=/productimages/_3533000/ff_3533150-d9254664c08370f8572c_full.jpg&w=340"
+                ),
             ]
             self?.tableView.reloadData()
         }
@@ -31,7 +33,7 @@ final class CatalogVC: UIViewController {
 
     static let productCellReuseId: String = ProductCell.description()
 
-    var items: [String] = []
+    var items: [Product] = []
 
     // MARK: Private
 

@@ -21,9 +21,34 @@ final class ProductCell: UITableViewCell {
 
     // MARK: Internal
 
-    var model: String? {
+    var model: Product? {
         didSet {
-            titleLabel.text = model
+            titleLabel.text = model?.title
+            departmentLabel.text = model?.department
+            var price = String(model?.price ?? 0)
+            price = String(price.reversed())
+            var newPrice: String = ""
+            var kol = 0
+            for character in price {
+                newPrice = String(character) + newPrice
+                kol += 1
+                kol %= 3
+                if kol == 0 {
+                    newPrice = " " + newPrice
+                }
+            }
+            priceLabel.text = newPrice + " ₽"
+
+            let url = URL(string: model!.preview)
+            DispatchQueue.global().async {
+                if let data = try? Data(contentsOf: url!) {
+                    if let image = UIImage(data: data) {
+                        DispatchQueue.main.async {
+                            self.contentImageView.image = image
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -44,7 +69,7 @@ final class ProductCell: UITableViewCell {
         return label
     }()
 
-    private lazy var descriptionLabel: UILabel = {
+    private lazy var departmentLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -72,12 +97,12 @@ final class ProductCell: UITableViewCell {
         selectionStyle = .none
         contentView.addSubview(contentImageView)
         contentView.addSubview(titleLabel)
-        contentView.addSubview(descriptionLabel)
+        contentView.addSubview(departmentLabel)
         contentView.addSubview(priceLabel)
         contentView.addSubview(addToCartButton)
         contentView.addSubview(separatorView)
 
-        [contentImageView, titleLabel, descriptionLabel, priceLabel, addToCartButton].forEach {
+        [contentImageView, titleLabel, departmentLabel, priceLabel, addToCartButton].forEach {
             $0.layer.borderWidth = 0
             $0.layer.borderColor = UIColor.red.cgColor
         }
@@ -91,15 +116,15 @@ final class ProductCell: UITableViewCell {
         titleLabel.numberOfLines = 0
         titleLabel.top(16).left(to: .right(16), of: contentImageView).right(16)
 
-        descriptionLabel.textColor = textSecondaryColor
-        descriptionLabel.font = UIFont(name: "Roboto-Regular", size: 12)
-        descriptionLabel.top(to: .bottom, of: titleLabel).left(to: .right(16), of: contentImageView).right(16)
-        descriptionLabel.text = "Джерси"
+        departmentLabel.textColor = textSecondaryColor
+        departmentLabel.font = UIFont(name: "Roboto-Regular", size: 12)
+        departmentLabel.top(to: .bottom, of: titleLabel).left(to: .right(16), of: contentImageView).right(16)
+        // departmentLabel.text = "Джерси"
 
         priceLabel.textColor = textPrimaryColor
         priceLabel.font = UIFont(name: "Roboto-Medium", size: 14)
         priceLabel.bottom(21).left(to: .right(16), of: contentImageView)
-        priceLabel.text = "9 000 ₽"
+        // priceLabel.text = "9 000 ₽"
 
         addToCartButton.setTitle(L10n.Product.buy, for: .normal)
         addToCartButton.setTitleColor(Asset.main.color, for: .normal)

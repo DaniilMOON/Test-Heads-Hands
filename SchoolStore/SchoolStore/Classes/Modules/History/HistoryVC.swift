@@ -25,7 +25,11 @@ final class HistoryVC: UIViewController {
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 0) { [weak self] in
             self?.items = [
-                "1", "2", "3", "4", "5",
+                "Заказ №123 от 19.09.21 18:03",
+                "Заказ №124 от 19.09.21 18:03",
+                "Заказ №125 от 19.09.21 18:03",
+                "Заказ №126 от 19.09.21 18:03",
+                "Заказ №127 от 19.09.21 18:03",
             ]
             self?.tableView.reloadData()
         }
@@ -63,12 +67,18 @@ final class HistoryVC: UIViewController {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
             items = [
-                "1", "2", "3", "4", "5",
+                "Заказ №123 от 19.09.21 18:03",
+                "Заказ №124 от 19.09.21 18:03",
+                "Заказ №125 от 19.09.21 18:03",
+                "Заказ №126 от 19.09.21 18:03",
+                "Заказ №127 от 19.09.21 18:03",
             ]
             tableView.reloadData()
         case 1:
             items = [
-                "2", "5",
+                "Заказ №123 от 19.09.21 18:03",
+                "Заказ №124 от 19.09.21 18:03",
+                "Заказ №127 от 19.09.21 18:03",
             ]
             tableView.reloadData()
         default:

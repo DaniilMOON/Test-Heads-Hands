@@ -29,6 +29,9 @@ final class ProductCell: UITableViewCell {
 
     // MARK: Private
 
+    private let textPrimaryColor: UIColor = Asset.textPrimary.color
+    private let textSecondaryColor: UIColor = Asset.textSecondary.color
+
     private lazy var contentImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -82,17 +85,21 @@ final class ProductCell: UITableViewCell {
         contentImageView.image = Asset.imagePlaceholder.image
         contentImageView.top(16).left(16).bottom(16).width(112).height(112)
 
+        titleLabel.textColor = textPrimaryColor
+        titleLabel.font = UIFont(name: "Roboto-Medium", size: 14)
         titleLabel.lineBreakMode = .byWordWrapping
         titleLabel.numberOfLines = 0
         titleLabel.top(16).left(to: .right(16), of: contentImageView).right(16)
 
-        descriptionLabel.text = "Джерси"
-        descriptionLabel.lineBreakMode = .byWordWrapping
-        descriptionLabel.numberOfLines = 0
+        descriptionLabel.textColor = textSecondaryColor
+        descriptionLabel.font = UIFont(name: "Roboto-Medium", size: 12)
         descriptionLabel.top(to: .bottom, of: titleLabel).left(to: .right(16), of: contentImageView).right(16)
+        descriptionLabel.text = "Джерси"
 
-        priceLabel.text = "9000"
+        priceLabel.textColor = textPrimaryColor
+        priceLabel.font = UIFont(name: "Roboto-Medium", size: 14)
         priceLabel.bottom(21).left(to: .right(16), of: contentImageView)
+        priceLabel.text = "9 000 ₽"
 
         addToCartButton.setTitle(L10n.Product.buy, for: .normal)
         addToCartButton.setTitleColor(Asset.main.color, for: .normal)

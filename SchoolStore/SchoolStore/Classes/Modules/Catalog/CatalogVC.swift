@@ -17,7 +17,11 @@ final class CatalogVC: UIViewController {
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 0) { [weak self] in
             self?.items = [
-                "1", "2", "3", "4", "5",
+                "Nike1 Tampa Bay Buccaneers Super Bowl LV",
+                "Nike2 Tampa Bay Buccaneers Super Bowl LV",
+                "Nike3 Tampa Bay Buccaneers Super Bowl LV",
+                "Nike4 Tampa Bay Buccaneers Super Bowl LV",
+                "Nike5 Tampa Bay Buccaneers Super Bowl LV",
             ]
             self?.tableView.reloadData()
         }

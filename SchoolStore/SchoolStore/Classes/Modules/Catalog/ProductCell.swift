@@ -40,14 +40,8 @@ final class ProductCell: UITableViewCell {
             priceLabel.text = newPrice + " ₽"
 
             let url = URL(string: model!.preview)
-            DispatchQueue.global().async {
-                if let data = try? Data(contentsOf: url!) {
-                    if let image = UIImage(data: data) {
-                        DispatchQueue.main.async {
-                            self.contentImageView.image = image
-                        }
-                    }
-                }
+            if let data = try? Data(contentsOf: url!) {
+                contentImageView.image = UIImage(data: data)
             }
         }
     }

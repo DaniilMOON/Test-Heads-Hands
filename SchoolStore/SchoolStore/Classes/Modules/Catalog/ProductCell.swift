@@ -92,7 +92,7 @@ final class ProductCell: UITableViewCell {
         titleLabel.top(16).left(to: .right(16), of: contentImageView).right(16)
 
         descriptionLabel.textColor = textSecondaryColor
-        descriptionLabel.font = UIFont(name: "Roboto-Medium", size: 12)
+        descriptionLabel.font = UIFont(name: "Roboto-Regular", size: 12)
         descriptionLabel.top(to: .bottom, of: titleLabel).left(to: .right(16), of: contentImageView).right(16)
         descriptionLabel.text = "Джерси"
 

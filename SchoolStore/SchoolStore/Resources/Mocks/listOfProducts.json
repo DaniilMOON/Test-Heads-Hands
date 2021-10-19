@@ -44,7 +44,7 @@
                 ],
                 "sizes": [
                     {
-                        "value": "L",
+                        "value": "S",
                         "is_available": "true"
                     },
                     {
@@ -72,11 +72,11 @@
                 ],
                 "sizes": [
                     {
-                        "value": "L",
+                        "value": "M",
                         "is_available": "true"
                     },
                     {
-                        "value": "XL",
+                        "value": "L",
                         "is_available": "true"
                     }
                 ],

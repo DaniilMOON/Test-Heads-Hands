@@ -73,5 +73,7 @@ extension CatalogVC: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("\(indexPath.row)")
+        let item = items[indexPath.row]
+        UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.rootViewController = VCFactory.buildProductVC(product: item)
     }
 }

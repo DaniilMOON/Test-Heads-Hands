@@ -83,12 +83,14 @@
 		EDA1BFC22716ACBA004D2AAD /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EDA1BFB62716ACBA004D2AAD /* Roboto-Medium.ttf */; };
 		EDA1BFC32716ACBA004D2AAD /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EDA1BFB72716ACBA004D2AAD /* Roboto-Regular.ttf */; };
 		EDA1BFC42716ACBA004D2AAD /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EDA1BFB82716ACBA004D2AAD /* Roboto-LightItalic.ttf */; };
-		EDA1BFC62716ADEB004D2AAD /* CustomizeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA1BFC52716ADEB004D2AAD /* CustomizeLabel.swift */; };
 		EDA1BFCE271713CC004D2AAD /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA1BFCD271713CC004D2AAD /* Product.swift */; };
 		EDA1BFD02717186D004D2AAD /* CatalogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA1BFCF2717186D004D2AAD /* CatalogService.swift */; };
 		EDA1BFD227178567004D2AAD /* ProductBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA1BFD127178567004D2AAD /* ProductBadge.swift */; };
 		EDA1BFD4271785CE004D2AAD /* ProductSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA1BFD3271785CE004D2AAD /* ProductSizes.swift */; };
 		EDF776B0271EDD2200A550C8 /* GetListOfProductResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF776AF271EDD2200A550C8 /* GetListOfProductResponse.swift */; };
+		EDF776B2271F117E00A550C8 /* DetalInfoProductPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDF776B1271F117E00A550C8 /* DetalInfoProductPage.storyboard */; };
+		EDF776B4271F5A2300A550C8 /* DetalInfoProductVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF776B3271F5A2300A550C8 /* DetalInfoProductVC.swift */; };
+		EDF776B7271F60FB00A550C8 /* DetalInfoProductPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF776B6271F60FB00A550C8 /* DetalInfoProductPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -172,6 +174,9 @@
 		EDA1BFD127178567004D2AAD /* ProductBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductBadge.swift; sourceTree = "<group>"; };
 		EDA1BFD3271785CE004D2AAD /* ProductSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductSizes.swift; sourceTree = "<group>"; };
 		EDF776AF271EDD2200A550C8 /* GetListOfProductResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetListOfProductResponse.swift; sourceTree = "<group>"; };
+		EDF776B1271F117E00A550C8 /* DetalInfoProductPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetalInfoProductPage.storyboard; sourceTree = "<group>"; };
+		EDF776B3271F5A2300A550C8 /* DetalInfoProductVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalInfoProductVC.swift; sourceTree = "<group>"; };
+		EDF776B6271F60FB00A550C8 /* DetalInfoProductPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalInfoProductPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +243,7 @@
 		C21E133427045A3F00867E2E /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				EDF776B5271F5D5C00A550C8 /* ProductPage */,
 				C21E134727045BAF00867E2E /* Profile */,
 				C21E134627045BA900867E2E /* History */,
 				C21E134527045B9D00867E2E /* Catalog */,
@@ -399,6 +405,7 @@
 				C21E13642704671A00867E2E /* Catalog.storyboard */,
 				C21E134C27045C8A00867E2E /* TabBar.storyboard */,
 				C21E134827045C5600867E2E /* Auth.storyboard */,
+				EDF776B1271F117E00A550C8 /* DetalInfoProductPage.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -473,6 +480,15 @@
 				EDA1BFB22716ACBA004D2AAD /* Roboto-ThinItalic.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		EDF776B5271F5D5C00A550C8 /* ProductPage */ = {
+			isa = PBXGroup;
+			children = (
+				EDF776B3271F5A2300A550C8 /* DetalInfoProductVC.swift */,
+				EDF776B6271F60FB00A550C8 /* DetalInfoProductPage.swift */,
+			);
+			path = ProductPage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -574,6 +590,7 @@
 				C21E134D27045C8A00867E2E /* TabBar.storyboard in Resources */,
 				C2B96D66270DE9D90012D0E8 /* detailsInfo.json in Resources */,
 				EDA1BFBB2716ACBA004D2AAD /* Roboto-Light.ttf in Resources */,
+				EDF776B2271F117E00A550C8 /* DetalInfoProductPage.storyboard in Resources */,
 				C2B96D64270DE9D90012D0E8 /* userBRerror.json in Resources */,
 				C2B96D63270DE9D90012D0E8 /* getProfile.json in Resources */,
 				C2B96D5F270DE9D90012D0E8 /* changeProfileBRerror.json in Resources */,
@@ -651,11 +668,13 @@
 				EDA1BFD02717186D004D2AAD /* CatalogService.swift in Sources */,
 				C2D720A427048AAF00C40EA5 /* DataResponse.swift in Sources */,
 				C27E0F1E270473A20015530B /* Assets.swift in Sources */,
+				EDF776B7271F60FB00A550C8 /* DetalInfoProductPage.swift in Sources */,
 				C2B96D49270DDE6F0012D0E8 /* ErrorResponse.swift in Sources */,
 				C2B96D41270DD9770012D0E8 /* SnackerStyle.swift in Sources */,
 				C21E13632704661500867E2E /* VCFactory.swift in Sources */,
 				C21E135D270464FF00867E2E /* Request.swift in Sources */,
 				C27E0F242704759D0015530B /* ProfileVC.swift in Sources */,
+				EDF776B4271F5A2300A550C8 /* DetalInfoProductVC.swift in Sources */,
 				C2B96D68270DEAA60012D0E8 /* CatallogRequests.swift in Sources */,
 				C2B96D45270DDA820012D0E8 /* Snacker.swift in Sources */,
 				C21E1353270460AE00867E2E /* DataService.swift in Sources */,
@@ -666,7 +685,6 @@
 				C2D7209D270484E700C40EA5 /* RequestMethod.swift in Sources */,
 				C27E0F20270473A20015530B /* StoryboardScenes.swift in Sources */,
 				EDA1BFAB2715CB91004D2AAD /* HistoryCell.swift in Sources */,
-				EDA1BFC62716ADEB004D2AAD /* CustomizeLabel.swift in Sources */,
 				ED62E1E2270DFFE800314313 /* ProductCell.swift in Sources */,
 				C2D720A22704869900C40EA5 /* UserRequest.swift in Sources */,
 				C2B96D43270DD9A50012D0E8 /* SnackCustomView.swift in Sources */,

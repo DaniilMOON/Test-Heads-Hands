@@ -13,6 +13,11 @@ enum VCFactory {
         return vc
     }
 
+    static func buildProductVC(product _: Product) -> UIViewController? {
+        let vc = StoryboardScene.DetalInfoProductPage.initialScene.instantiate()
+        return vc
+    }
+
     static func buildTabBarVC() -> UIViewController? {
         let tabBarVC = StoryboardScene.TabBar.initialScene.instantiate()
         tabBarVC.viewControllers?.forEach { vc in

@@ -9,9 +9,3 @@ import Foundation
 struct GetListOfProductResponse: Decodable {
     let products: [Product]
 }
-
-// MARK: - GetDetailInfoResponse
-
-struct GetDetailInfoResponse: Decodable {
-    let product: Product
-}

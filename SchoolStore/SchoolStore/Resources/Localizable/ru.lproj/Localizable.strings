@@ -15,3 +15,6 @@
 "history.deleteOrder.yes" = "Да";
 "history.deleteOrder.no" = "Нет";
 
+"detalInfoProduct.back" = "Назад";
+"detalInfoProduct.buyNow" = "Купить сейчас";
+

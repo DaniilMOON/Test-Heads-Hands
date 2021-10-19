@@ -31,6 +31,13 @@ internal enum L10n {
     internal static let error = L10n.tr("Localizable", "common.error")
   }
 
+  internal enum DetalInfoProduct {
+    /// Назад
+    internal static let back = L10n.tr("Localizable", "detalInfoProduct.back")
+    /// Купить сейчас
+    internal static let buyNow = L10n.tr("Localizable", "detalInfoProduct.buyNow")
+  }
+
   internal enum History {
     internal enum DeleteOrder {
       /// Вы точно хотите отменить заказ?

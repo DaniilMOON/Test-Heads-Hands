@@ -15,18 +15,15 @@ final class CatalogVC: UIViewController {
         view.addSubview(tableView)
         tableView.top().left().right().bottom()
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0) { [weak self] in
-            self?.items = [
-                Product(
-                    id: "",
-                    title: "Men's Nike J.J. Watt Black Arizona Cardinals Legend Jersey",
-                    department: "Джерси",
-                    price: 9_000_000,
-                    preview: "https://fanatics.frgimages.com/FFImage/thumb.aspx?i=/productimages/_3533000/ff_3533150-d9254664c08370f8572c_full.jpg&w=340"
-                ),
-            ]
-            self?.tableView.reloadData()
-        }
+        catalogService?.getProductList(completion: { result in
+            switch result {
+            case let .success(items):
+                self.items = items
+                self.tableView.reloadData()
+            case .failure:
+                break
+            }
+        })
     }
 
     // MARK: Internal
@@ -35,7 +32,13 @@ final class CatalogVC: UIViewController {
 
     var items: [Product] = []
 
+    func setup(with catalogService: CatalogService) {
+        self.catalogService = catalogService
+    }
+
     // MARK: Private
+
+    private var catalogService: CatalogService?
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
@@ -66,5 +69,9 @@ extension CatalogVC: UITableViewDelegate, UITableViewDataSource {
         }
         cell.model = items[indexPath.row]
         return cell
+    }
+
+    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("\(indexPath.row)")
     }
 }

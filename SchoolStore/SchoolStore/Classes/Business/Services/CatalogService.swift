@@ -7,7 +7,7 @@ import Foundation
 // MARK: - CatalogService
 
 protocol CatalogService: AnyObject {
-    func getListOfProducts(user: String, with password: String, completion: ((Result<String, Error>) -> Void)?)
+    func getProductList(completion: ((Result<[Product], Error>) -> Void)?)
 }
 
 // MARK: - CatalogServiceImpl
@@ -15,31 +15,27 @@ protocol CatalogService: AnyObject {
 final class CatalogServiceImpl: CatalogService {
     // MARK: Lifecycle
 
-    init(networkProvider: NetworkProvider, dataService: DataService) {
+    init(networkProvider: NetworkProvider) {
         self.networkProvider = networkProvider
-        self.dataService = dataService
     }
 
     // MARK: Internal
 
-    typealias Authenticateed = DataResponse<AuthResponse>
+    typealias ProductList = DataResponse<GetListOfProductResponse>
 
-    func getListOfProducts(user: String, with password: String, completion: ((Result<String, Error>) -> Void)?) {
-        networkProvider.mock(UserRequest.login(user: user, password: password)) { [weak self] (result: Result<Authenticateed, Error>) in
+    func getProductList(completion: ((Result<[Product], Error>) -> Void)?) {
+        networkProvider.mock(CatalogRequest.listOfProducts, completion: {
+            (result: Result<ProductList, Error>) in
             switch result {
-            case let .success(data):
-                let token = data.data.accessToken
-                self?.dataService.appState.accessToken = token
-                completion?(Result.success(token))
+            case .success:
+                completion?(result.map { obj in obj.data.products })
             case let .failure(error):
                 completion?(Result.failure(error))
             }
-        }
+        })
     }
 
     // MARK: Private
 
     private let networkProvider: NetworkProvider
-
-    private let dataService: DataService
 }

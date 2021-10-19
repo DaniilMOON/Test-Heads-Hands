@@ -16,4 +16,8 @@ enum CoreFactory {
     static func buildAuthService() -> AuthService {
         AuthServiceImpl(networkProvider: Self.networkProvider, dataService: Self.dataService)
     }
+
+    static func buildCatalogService() -> CatalogService {
+        CatalogServiceImpl(networkProvider: Self.networkProvider)
+    }
 }

@@ -24,8 +24,9 @@ enum VCFactory {
                 vc.dataService = CoreFactory.dataService
             case is HistoryVC:
                 break
-            case is CatalogVC:
-                break
+            case let vc as CatalogVC:
+                let catalogService = CoreFactory.buildCatalogService()
+                vc.setup(with: catalogService)
             default:
                 break
             }

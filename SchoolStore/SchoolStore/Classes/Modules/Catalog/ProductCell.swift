@@ -25,19 +25,13 @@ final class ProductCell: UITableViewCell {
         didSet {
             titleLabel.text = model?.title
             departmentLabel.text = model?.department
-            var price = String(model?.price ?? 0)
-            price = String(price.reversed())
-            var newPrice: String = ""
-            var kol = 0
-            for character in price {
-                newPrice = String(character) + newPrice
-                kol += 1
-                kol %= 3
-                if kol == 0 {
-                    newPrice = " " + newPrice
-                }
-            }
-            priceLabel.text = newPrice + " ₽"
+
+            let price = (model?.price ?? 0) as NSNumber
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .currency
+            formatter.minimumSignificantDigits = 0
+            formatter.locale = Locale(identifier: "ru_RU")
+            priceLabel.text = formatter.string(from: price)
 
             let url = URL(string: model!.preview)
             let task = URLSession.shared.dataTask(with: url!) { data, _, _ in

@@ -7,7 +7,7 @@ import Foundation
 // MARK: - CatalogService
 
 protocol CatalogService: AnyObject {
-    func getProductList(completion: ((Result<[Product], Error>) -> Void)?)
+    func getProductList(limit: Int, offset: Int, completion: ((Result<[Product], Error>) -> Void)?)
 }
 
 // MARK: - CatalogServiceImpl
@@ -23,7 +23,7 @@ final class CatalogServiceImpl: CatalogService {
 
     typealias ProductList = DataResponse<GetListOfProductResponse>
 
-    func getProductList(completion: ((Result<[Product], Error>) -> Void)?) {
+    func getProductList(limit _: Int, offset _: Int, completion: ((Result<[Product], Error>) -> Void)?) {
         networkProvider.mock(CatalogRequest.listOfProducts, completion: {
             (result: Result<ProductList, Error>) in
             switch result {

@@ -15,7 +15,7 @@ final class CatalogVC: UIViewController {
         view.addSubview(tableView)
         tableView.top().left().right().bottom()
 
-        catalogService?.getProductList(completion: { result in
+        catalogService?.getProductList(limit: 20, offset: 0, completion: { result in
             switch result {
             case let .success(items):
                 self.items = items

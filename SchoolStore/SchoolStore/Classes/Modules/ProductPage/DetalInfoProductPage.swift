@@ -146,7 +146,29 @@ class DetalInfoProductPage: UIView {
         departmentLabel.textColor = textSecondaryColor
         departmentLabel.font = UIFont(name: "Roboto-Medium", size: 14)
         departmentLabel.top(to: .bottom(4), of: titleLabel).left(16)
-        
-        
+
+        sizeLabel.backgroundColor = .systemGray2
+        sizeLabel.top(to: .bottom(16), of: departmentLabel).left(16).right(16).height(54)
+
+        descriptionLabel
+            .text =
+            "The Tampa Bay Buccaneers are headed to Super Bowl LV! As a major fan, this is no surprise but it's definitely worth celebrating, especially after the unprecedented 2020 NFL season. Add this Tom Brady Game Jersey to your collection to ensure you're Super Bowl ready. This Nike gear features bold commemorative graphics that will let the Tampa Bay Buccaneers know they have the best fans in the league."
+        descriptionLabel.textColor = textPrimaryColor
+        descriptionLabel.font = UIFont(name: "Roboto-Regular", size: 14)
+        descriptionLabel.lineBreakMode = .byWordWrapping
+        descriptionLabel.numberOfLines = 0
+        descriptionLabel.top(to: .bottom(16), of: sizeLabel).left(16).right(16)
+
+        separatorView.backgroundColor = Asset.separator.color
+        separatorView.top(to: .bottom(16), of: descriptionLabel).left(16).right(16).height(1)
+
+        detailsLabel
+            .text =
+            "Material: 100% Polyester\nFoam tongue helps reduce lace pressure.\nMesh in the upper provides a breathable and plush sensation that stretches with your foot.\nMidfoot webbing delivers security. The webbing tightens around your foot when you lace up, letting you choose your fit and feel.\nNike React foam is lightweight, springy and durable. More foam means better cushioning without the bulk. A Zoom Air unit in the forefoot delivers more bounce with every step. It's top-loaded to be closer to your foot for responsiveness.\nThe classic fit and feel of the Pegasus is back—with a wider toe box to provide extra room. Seaming on the upper provides a better shape and fit, delivering a fresh take on an icon.\nOfficially licensed\nImported\nBrand: Nike"
+        detailsLabel.textColor = textSecondaryColor
+        detailsLabel.font = UIFont(name: "Roboto-Regular", size: 14)
+        detailsLabel.lineBreakMode = .byWordWrapping
+        detailsLabel.numberOfLines = 0
+        detailsLabel.top(to: .bottom(16), of: separatorView).left(16).right(16)
     }
 }

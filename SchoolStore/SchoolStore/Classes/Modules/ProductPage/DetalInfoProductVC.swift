@@ -20,20 +20,13 @@ class DetalInfoProductVC: UIViewController {
         navigationItem.leftBarButtonItem = backButton
 
         view.addSubview(scrollView)
-        scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        scrollView.safeArea { $0.top().left().right().bottom() }
+
+        scrollView.addSubview(detalInfoProduct)
+        detalInfoProduct.top().left().right().bottom().width(as: scrollView).height(as: scrollView)
 
         view.addSubview(buyButton)
         buyButton.bottom(24).left(16).right(16).height(44)
-
-        scrollView.addSubview(detalInfoProduct)
-        detalInfoProduct.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
-        detalInfoProduct.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
-        detalInfoProduct.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
-        detalInfoProduct.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-        detalInfoProduct.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
     }
 
     // MARK: Internal
@@ -56,7 +49,6 @@ class DetalInfoProductVC: UIViewController {
         button.backgroundColor = .systemBlue
         button.setTitle(L10n.DetalInfoProduct.buyNow, for: .normal)
         button.layer.cornerRadius = 12
-
         return button
     }()
 

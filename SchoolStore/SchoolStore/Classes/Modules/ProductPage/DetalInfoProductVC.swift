@@ -23,10 +23,10 @@ class DetalInfoProductVC: UIViewController {
         scrollView.safeArea { $0.top().left().right().bottom() }
 
         scrollView.addSubview(detalInfoProduct)
-        detalInfoProduct.top().left().right().bottom().width(as: scrollView).height(as: scrollView)
+        detalInfoProduct.top().left().right().bottom().width(as: scrollView)
 
         view.addSubview(buyButton)
-        buyButton.bottom(24).left(16).right(16).height(44)
+        buyButton.left(16).right(16).height(44).safeArea { $0.bottom() }
     }
 
     // MARK: Internal

@@ -169,6 +169,6 @@ class DetalInfoProductPage: UIView {
         detailsLabel.font = UIFont(name: "Roboto-Regular", size: 14)
         detailsLabel.lineBreakMode = .byWordWrapping
         detailsLabel.numberOfLines = 0
-        detailsLabel.top(to: .bottom(16), of: separatorView).left(16).right(16)
+        detailsLabel.top(to: .bottom(16), of: separatorView).left(16).right(16).bottom(76)
     }
 }

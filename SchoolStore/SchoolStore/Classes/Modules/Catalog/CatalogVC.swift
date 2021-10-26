@@ -12,10 +12,11 @@ final class CatalogVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = L10n.Catalog.title
+
         view.addSubview(tableView)
         tableView.top().left().right().bottom()
-
-        catalogService?.getProductList(limit: 20, offset: 0, completion: { result in
+        catalogService?.getProductList(with: 0, limit: 20, completion: { result in
             switch result {
             case let .success(items):
                 self.items = items
@@ -32,8 +33,11 @@ final class CatalogVC: UIViewController {
 
     var items: [Product] = []
 
-    func setup(with catalogService: CatalogService) {
+    var snacker: Snacker?
+
+    func setup(with catalogService: CatalogService, _ snacker: Snacker) {
         self.catalogService = catalogService
+        self.snacker = snacker
     }
 
     // MARK: Private
@@ -68,12 +72,41 @@ extension CatalogVC: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         cell.model = items[indexPath.row]
+        cell.buyButton = { model in
+            guard let product = model else {
+                return
+            }
+            self.catalogService?.getProduct(with: product.id, completion: { [weak self] result in
+                guard let self = self else {
+                    return
+                }
+                switch result {
+                case let .success(model):
+                    debugPrint("Transition buy to \(model.id)")
+                    self.navigationController?.pushViewController(VCFactory.buildOrderFormVC(with: model), animated: true)
+                case let .failure(error):
+                    self.snacker?.show(snack: error.localizedDescription, with: .error)
+                }
+            })
+        }
         return cell
     }
 
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("\(indexPath.row)")
-        let item = items[indexPath.row]
-        UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.rootViewController = VCFactory.buildProductVC(product: item)
+        guard items.indices.contains(indexPath.row) else {
+            return
+        }
+        catalogService?.getProduct(with: items[indexPath.row].id, completion: { [weak self] result in
+            guard let self = self else {
+                return
+            }
+            switch result {
+            case let .success(model):
+                debugPrint("Transition to \(model.id)")
+                self.navigationController?.pushViewController(VCFactory.buildProductVC(with: model), animated: true)
+            case let .failure(error):
+                self.snacker?.show(snack: error.localizedDescription, with: .error)
+            }
+        })
     }
 }

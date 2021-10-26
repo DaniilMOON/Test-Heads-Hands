@@ -1,4 +1,3 @@
-
 "auth.login" = "Логин";
 "auth.password" = "Пароль";
 "auth.action" = "Войти";
@@ -6,7 +5,8 @@
 "common.error" = "Что-то пошло не так";
 "common.emptyField" = "Поле пустое";
 
-"product.buy" = "Купить";
+"catalog.title" = "Каталог";
+"catalog.buy" = "Купить";
 
 "history.segmentedControl.all" = "ВСЕ";
 "history.segmentedControl.active" = "АКТИВНЫЕ";
@@ -17,4 +17,9 @@
 
 "detalInfoProduct.back" = "Назад";
 "detalInfoProduct.buyNow" = "Купить сейчас";
+
+"orderForm.address" = "Дом";
+"orderForm.flatNumber" = "Квартира";
+"orderForm.deliveryDate" = "Дата доставки";
+"orderForm.buyNow" = "Купить за";
 

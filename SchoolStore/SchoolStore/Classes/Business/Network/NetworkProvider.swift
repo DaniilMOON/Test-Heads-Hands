@@ -30,8 +30,7 @@ final class NetworkProviderImpl: NetworkProvider {
         }
         if let response = try? decoder.decode(T.self, from: data) {
             completion?(.success(response))
-        }
-        if let errorResponse = try? decoder.decode(ErrorResponse.self, from: data) {
+        } else if let errorResponse = try? decoder.decode(ErrorResponse.self, from: data) {
             completion?(.failure(Errors.failedResponse(message: errorResponse.message, fields: errorResponse.fields)))
         } else {
             completion?(.failure(Errors.unknown))

@@ -13,8 +13,18 @@ enum VCFactory {
         return vc
     }
 
-    static func buildProductVC(product _: Product) -> UIViewController? {
-        let vc = StoryboardScene.DetalInfoProductPage.initialScene.instantiate()
+    static func buildProductVC(with product: Product) -> UIViewController {
+        let vc = ProductVC()
+        let snacker = CoreFactory.snacker
+        let catalogService = CoreFactory.buildCatalogService()
+        vc.setup(with: catalogService, product, snacker)
+        return vc
+    }
+
+    static func buildOrderFormVC(with product: Product) -> UIViewController {
+        let vc = OrderFormVC()
+        let snacker = CoreFactory.snacker
+        vc.setup(with: product, snacker)
         return vc
     }
 
@@ -31,7 +41,8 @@ enum VCFactory {
                 break
             case let vc as CatalogVC:
                 let catalogService = CoreFactory.buildCatalogService()
-                vc.setup(with: catalogService)
+                let snacker = CoreFactory.snacker
+                vc.setup(with: catalogService, snacker)
             default:
                 break
             }

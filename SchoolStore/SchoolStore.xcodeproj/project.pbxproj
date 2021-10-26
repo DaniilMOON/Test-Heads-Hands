@@ -48,7 +48,7 @@
 		C2B96D5A270DE9D90012D0E8 /* changeProfile.json in Resources */ = {isa = PBXBuildFile; fileRef = C2B96D4D270DE9D80012D0E8 /* changeProfile.json */; };
 		C2B96D5B270DE9D90012D0E8 /* userUEerror.json in Resources */ = {isa = PBXBuildFile; fileRef = C2B96D4E270DE9D80012D0E8 /* userUEerror.json */; };
 		C2B96D5C270DE9D90012D0E8 /* arrangeOrder.json in Resources */ = {isa = PBXBuildFile; fileRef = C2B96D4F270DE9D80012D0E8 /* arrangeOrder.json */; };
-		C2B96D5D270DE9D90012D0E8 /* listOfProducts.json in Resources */ = {isa = PBXBuildFile; fileRef = C2B96D50270DE9D80012D0E8 /* listOfProducts.json */; };
+		C2B96D5D270DE9D90012D0E8 /* listOfProducts1.json in Resources */ = {isa = PBXBuildFile; fileRef = C2B96D50270DE9D80012D0E8 /* listOfProducts1.json */; };
 		C2B96D5E270DE9D90012D0E8 /* listOfOrders.json in Resources */ = {isa = PBXBuildFile; fileRef = C2B96D51270DE9D80012D0E8 /* listOfOrders.json */; };
 		C2B96D5F270DE9D90012D0E8 /* changeProfileBRerror.json in Resources */ = {isa = PBXBuildFile; fileRef = C2B96D52270DE9D80012D0E8 /* changeProfileBRerror.json */; };
 		C2B96D60270DE9D90012D0E8 /* changeProfileForbidden.json in Resources */ = {isa = PBXBuildFile; fileRef = C2B96D53270DE9D80012D0E8 /* changeProfileForbidden.json */; };
@@ -87,10 +87,15 @@
 		EDA1BFD02717186D004D2AAD /* CatalogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA1BFCF2717186D004D2AAD /* CatalogService.swift */; };
 		EDA1BFD227178567004D2AAD /* ProductBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA1BFD127178567004D2AAD /* ProductBadge.swift */; };
 		EDA1BFD4271785CE004D2AAD /* ProductSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA1BFD3271785CE004D2AAD /* ProductSizes.swift */; };
-		EDF776B0271EDD2200A550C8 /* GetListOfProductResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF776AF271EDD2200A550C8 /* GetListOfProductResponse.swift */; };
-		EDF776B2271F117E00A550C8 /* DetalInfoProductPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDF776B1271F117E00A550C8 /* DetalInfoProductPage.storyboard */; };
-		EDF776B4271F5A2300A550C8 /* DetalInfoProductVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF776B3271F5A2300A550C8 /* DetalInfoProductVC.swift */; };
-		EDF776B7271F60FB00A550C8 /* DetalInfoProductPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF776B6271F60FB00A550C8 /* DetalInfoProductPage.swift */; };
+		EDF776B0271EDD2200A550C8 /* CatalogResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF776AF271EDD2200A550C8 /* CatalogResponse.swift */; };
+		EDF776B4271F5A2300A550C8 /* ProductVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF776B3271F5A2300A550C8 /* ProductVC.swift */; };
+		EDF776B7271F60FB00A550C8 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF776B6271F60FB00A550C8 /* ProductView.swift */; };
+		EDF776BB272293FF00A550C8 /* ProductResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF776BA272293FF00A550C8 /* ProductResponse.swift */; };
+		EDF776BD27229AC900A550C8 /* listOfProducts2.json in Resources */ = {isa = PBXBuildFile; fileRef = EDF776BC27229AC900A550C8 /* listOfProducts2.json */; };
+		EDF776BF27229B7F00A550C8 /* listOfProducts3.json in Resources */ = {isa = PBXBuildFile; fileRef = EDF776BE27229B7F00A550C8 /* listOfProducts3.json */; };
+		EDF776C227286C0C00A550C8 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = EDF776C127286C0C00A550C8 /* Kingfisher */; };
+		EDF776C52728802400A550C8 /* OrderFormVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF776C42728802400A550C8 /* OrderFormVC.swift */; };
+		EDF776C7272880B400A550C8 /* OrderFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF776C6272880B400A550C8 /* OrderFormView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -134,7 +139,7 @@
 		C2B96D4D270DE9D80012D0E8 /* changeProfile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = changeProfile.json; sourceTree = "<group>"; };
 		C2B96D4E270DE9D80012D0E8 /* userUEerror.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = userUEerror.json; sourceTree = "<group>"; };
 		C2B96D4F270DE9D80012D0E8 /* arrangeOrder.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = arrangeOrder.json; sourceTree = "<group>"; };
-		C2B96D50270DE9D80012D0E8 /* listOfProducts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = listOfProducts.json; sourceTree = "<group>"; };
+		C2B96D50270DE9D80012D0E8 /* listOfProducts1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = listOfProducts1.json; sourceTree = "<group>"; };
 		C2B96D51270DE9D80012D0E8 /* listOfOrders.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = listOfOrders.json; sourceTree = "<group>"; };
 		C2B96D52270DE9D80012D0E8 /* changeProfileBRerror.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = changeProfileBRerror.json; sourceTree = "<group>"; };
 		C2B96D53270DE9D80012D0E8 /* changeProfileForbidden.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = changeProfileForbidden.json; sourceTree = "<group>"; };
@@ -173,10 +178,14 @@
 		EDA1BFCF2717186D004D2AAD /* CatalogService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogService.swift; sourceTree = "<group>"; };
 		EDA1BFD127178567004D2AAD /* ProductBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductBadge.swift; sourceTree = "<group>"; };
 		EDA1BFD3271785CE004D2AAD /* ProductSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductSizes.swift; sourceTree = "<group>"; };
-		EDF776AF271EDD2200A550C8 /* GetListOfProductResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetListOfProductResponse.swift; sourceTree = "<group>"; };
-		EDF776B1271F117E00A550C8 /* DetalInfoProductPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetalInfoProductPage.storyboard; sourceTree = "<group>"; };
-		EDF776B3271F5A2300A550C8 /* DetalInfoProductVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalInfoProductVC.swift; sourceTree = "<group>"; };
-		EDF776B6271F60FB00A550C8 /* DetalInfoProductPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalInfoProductPage.swift; sourceTree = "<group>"; };
+		EDF776AF271EDD2200A550C8 /* CatalogResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogResponse.swift; sourceTree = "<group>"; };
+		EDF776B3271F5A2300A550C8 /* ProductVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductVC.swift; sourceTree = "<group>"; };
+		EDF776B6271F60FB00A550C8 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
+		EDF776BA272293FF00A550C8 /* ProductResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductResponse.swift; sourceTree = "<group>"; };
+		EDF776BC27229AC900A550C8 /* listOfProducts2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = listOfProducts2.json; sourceTree = "<group>"; };
+		EDF776BE27229B7F00A550C8 /* listOfProducts3.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = listOfProducts3.json; sourceTree = "<group>"; };
+		EDF776C42728802400A550C8 /* OrderFormVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderFormVC.swift; sourceTree = "<group>"; };
+		EDF776C6272880B400A550C8 /* OrderFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderFormView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +197,7 @@
 				C214165E270DB9E400C40071 /* KeychainAccess in Frameworks */,
 				C214165B270DA80B00C40071 /* AutoLayoutSugar in Frameworks */,
 				ED61AE8327133069000DA95E /* KeyboardManager in Frameworks */,
+				EDF776C227286C0C00A550C8 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,7 +253,8 @@
 		C21E133427045A3F00867E2E /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				EDF776B5271F5D5C00A550C8 /* ProductPage */,
+				EDF776C327287FF500A550C8 /* OrderForm */,
+				EDF776B5271F5D5C00A550C8 /* Product */,
 				C21E134727045BAF00867E2E /* Profile */,
 				C21E134627045BA900867E2E /* History */,
 				C21E134527045B9D00867E2E /* Catalog */,
@@ -405,7 +416,6 @@
 				C21E13642704671A00867E2E /* Catalog.storyboard */,
 				C21E134C27045C8A00867E2E /* TabBar.storyboard */,
 				C21E134827045C5600867E2E /* Auth.storyboard */,
-				EDF776B1271F117E00A550C8 /* DetalInfoProductPage.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -436,7 +446,8 @@
 				C2D720A327048AAF00C40EA5 /* DataResponse.swift */,
 				C2D720A627048AF000C40EA5 /* AuthResponse.swift */,
 				C2B96D48270DDE6F0012D0E8 /* ErrorResponse.swift */,
-				EDF776AF271EDD2200A550C8 /* GetListOfProductResponse.swift */,
+				EDF776AF271EDD2200A550C8 /* CatalogResponse.swift */,
+				EDF776BA272293FF00A550C8 /* ProductResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -454,7 +465,9 @@
 				C2B96D58270DE9D80012D0E8 /* getProfileBRerror.json */,
 				C2B96D55270DE9D80012D0E8 /* getProfileForbidden.json */,
 				C2B96D51270DE9D80012D0E8 /* listOfOrders.json */,
-				C2B96D50270DE9D80012D0E8 /* listOfProducts.json */,
+				C2B96D50270DE9D80012D0E8 /* listOfProducts1.json */,
+				EDF776BC27229AC900A550C8 /* listOfProducts2.json */,
+				EDF776BE27229B7F00A550C8 /* listOfProducts3.json */,
 				C2B96D57270DE9D80012D0E8 /* userBRerror.json */,
 				C2B96D4E270DE9D80012D0E8 /* userUEerror.json */,
 				C2B96D46270DDE360012D0E8 /* authFailed.json */,
@@ -482,13 +495,22 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		EDF776B5271F5D5C00A550C8 /* ProductPage */ = {
+		EDF776B5271F5D5C00A550C8 /* Product */ = {
 			isa = PBXGroup;
 			children = (
-				EDF776B3271F5A2300A550C8 /* DetalInfoProductVC.swift */,
-				EDF776B6271F60FB00A550C8 /* DetalInfoProductPage.swift */,
+				EDF776B3271F5A2300A550C8 /* ProductVC.swift */,
+				EDF776B6271F60FB00A550C8 /* ProductView.swift */,
 			);
-			path = ProductPage;
+			path = Product;
+			sourceTree = "<group>";
+		};
+		EDF776C327287FF500A550C8 /* OrderForm */ = {
+			isa = PBXGroup;
+			children = (
+				EDF776C42728802400A550C8 /* OrderFormVC.swift */,
+				EDF776C6272880B400A550C8 /* OrderFormView.swift */,
+			);
+			path = OrderForm;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -514,6 +536,7 @@
 				C214165D270DB9E400C40071 /* KeychainAccess */,
 				C2B96D3D270DD48C0012D0E8 /* TTGSnackbar */,
 				ED61AE8227133069000DA95E /* KeyboardManager */,
+				EDF776C127286C0C00A550C8 /* Kingfisher */,
 			);
 			productName = SchoolStore;
 			productReference = C21E131C2704510C00867E2E /* SchoolStore.app */;
@@ -548,6 +571,7 @@
 				C214165C270DB9E400C40071 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				C2B96D3C270DD48C0012D0E8 /* XCRemoteSwiftPackageReference "TTGSnackbar" */,
 				ED61AE8127133068000DA95E /* XCRemoteSwiftPackageReference "KeyboardManager" */,
+				EDF776C027286C0C00A550C8 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = C21E131D2704510C00867E2E /* Products */;
 			projectDirPath = "";
@@ -564,14 +588,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDA1BFC12716ACBA004D2AAD /* Roboto-BoldItalic.ttf in Resources */,
-				C2B96D5D270DE9D90012D0E8 /* listOfProducts.json in Resources */,
+				C2B96D5D270DE9D90012D0E8 /* listOfProducts1.json in Resources */,
 				EDA1BFBE2716ACBA004D2AAD /* Roboto-ThinItalic.ttf in Resources */,
 				C2B96D60270DE9D90012D0E8 /* changeProfileForbidden.json in Resources */,
 				C2B96D61270DE9D90012D0E8 /* cancelOrder.json in Resources */,
 				C21E134927045C5600867E2E /* Auth.storyboard in Resources */,
 				EDA1BFC32716ACBA004D2AAD /* Roboto-Regular.ttf in Resources */,
 				C2B96D5E270DE9D90012D0E8 /* listOfOrders.json in Resources */,
+				EDF776BF27229B7F00A550C8 /* listOfProducts3.json in Resources */,
 				EDA1BFBA2716ACBA004D2AAD /* Roboto-Bold.ttf in Resources */,
+				EDF776BD27229AC900A550C8 /* listOfProducts2.json in Resources */,
 				EDA1BFBF2716ACBA004D2AAD /* Roboto-BlackItalic.ttf in Resources */,
 				C21E132C2704510E00867E2E /* LaunchScreen.storyboard in Resources */,
 				EDA1BFC22716ACBA004D2AAD /* Roboto-Medium.ttf in Resources */,
@@ -590,7 +616,6 @@
 				C21E134D27045C8A00867E2E /* TabBar.storyboard in Resources */,
 				C2B96D66270DE9D90012D0E8 /* detailsInfo.json in Resources */,
 				EDA1BFBB2716ACBA004D2AAD /* Roboto-Light.ttf in Resources */,
-				EDF776B2271F117E00A550C8 /* DetalInfoProductPage.storyboard in Resources */,
 				C2B96D64270DE9D90012D0E8 /* userBRerror.json in Resources */,
 				C2B96D63270DE9D90012D0E8 /* getProfile.json in Resources */,
 				C2B96D5F270DE9D90012D0E8 /* changeProfileBRerror.json in Resources */,
@@ -651,6 +676,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C27E0F1F270473A20015530B /* StoryboardSegues.swift in Sources */,
+				EDF776C52728802400A550C8 /* OrderFormVC.swift in Sources */,
 				C21E134B27045C6C00867E2E /* AuthVC.swift in Sources */,
 				C27E0F21270473A20015530B /* Strings.swift in Sources */,
 				C2B96D6A270DEAB20012D0E8 /* OrdersRequests.swift in Sources */,
@@ -668,18 +694,18 @@
 				EDA1BFD02717186D004D2AAD /* CatalogService.swift in Sources */,
 				C2D720A427048AAF00C40EA5 /* DataResponse.swift in Sources */,
 				C27E0F1E270473A20015530B /* Assets.swift in Sources */,
-				EDF776B7271F60FB00A550C8 /* DetalInfoProductPage.swift in Sources */,
+				EDF776B7271F60FB00A550C8 /* ProductView.swift in Sources */,
 				C2B96D49270DDE6F0012D0E8 /* ErrorResponse.swift in Sources */,
 				C2B96D41270DD9770012D0E8 /* SnackerStyle.swift in Sources */,
 				C21E13632704661500867E2E /* VCFactory.swift in Sources */,
 				C21E135D270464FF00867E2E /* Request.swift in Sources */,
 				C27E0F242704759D0015530B /* ProfileVC.swift in Sources */,
-				EDF776B4271F5A2300A550C8 /* DetalInfoProductVC.swift in Sources */,
+				EDF776B4271F5A2300A550C8 /* ProductVC.swift in Sources */,
 				C2B96D68270DEAA60012D0E8 /* CatallogRequests.swift in Sources */,
 				C2B96D45270DDA820012D0E8 /* Snacker.swift in Sources */,
 				C21E1353270460AE00867E2E /* DataService.swift in Sources */,
 				C21E1357270463C400867E2E /* AuthService.swift in Sources */,
-				EDF776B0271EDD2200A550C8 /* GetListOfProductResponse.swift in Sources */,
+				EDF776B0271EDD2200A550C8 /* CatalogResponse.swift in Sources */,
 				C2D7209F2704855100C40EA5 /* RequestBuilder.swift in Sources */,
 				EDA1BFCE271713CC004D2AAD /* Product.swift in Sources */,
 				C2D7209D270484E700C40EA5 /* RequestMethod.swift in Sources */,
@@ -691,6 +717,8 @@
 				EDA1BFD4271785CE004D2AAD /* ProductSizes.swift in Sources */,
 				5E74DC9F682F7103E6003DD3 /* InputField.swift in Sources */,
 				EDA1BFD227178567004D2AAD /* ProductBadge.swift in Sources */,
+				EDF776BB272293FF00A550C8 /* ProductResponse.swift in Sources */,
+				EDF776C7272880B400A550C8 /* OrderFormView.swift in Sources */,
 				C2B96D4B270DE0A00012D0E8 /* FieldError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -937,6 +965,14 @@
 				minimumVersion = 1.6.1;
 			};
 		};
+		EDF776C027286C0C00A550C8 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.1.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -959,6 +995,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = ED61AE8127133068000DA95E /* XCRemoteSwiftPackageReference "KeyboardManager" */;
 			productName = KeyboardManager;
+		};
+		EDF776C127286C0C00A550C8 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EDF776C027286C0C00A550C8 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

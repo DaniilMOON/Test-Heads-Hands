@@ -4,6 +4,7 @@
 
 import AutoLayoutSugar
 import Foundation
+import Kingfisher
 import UIKit
 
 final class ProductCell: UITableViewCell {
@@ -21,6 +22,8 @@ final class ProductCell: UITableViewCell {
 
     // MARK: Internal
 
+    var buyButton: ((Product?) -> Void)?
+
     var model: Product? {
         didSet {
             titleLabel.text = model?.title
@@ -33,16 +36,21 @@ final class ProductCell: UITableViewCell {
             formatter.locale = Locale(identifier: "ru_RU")
             priceLabel.text = formatter.string(from: price)
 
-            let url = URL(string: model!.preview)
-            let task = URLSession.shared.dataTask(with: url!) { data, _, _ in
-                guard let data = data else {
-                    return
-                }
-                DispatchQueue.main.async {
-                    self.contentImageView.image = UIImage(data: data)
-                }
+            if let previewUrl = URL(string: model?.preview ?? "") {
+                let contentImageResource = ImageResource(downloadURL: previewUrl, cacheKey: model?.preview)
+                contentImageView.kf.setImage(
+                    with: contentImageResource,
+                    placeholder: Asset.imagePlaceholder.image,
+                    options: [
+                        .transition(.fade(0.2)),
+                        .forceTransition,
+                        .cacheOriginalImage,
+                        .keepCurrentImageWhileLoading,
+                    ]
+                )
+            } else {
+                contentImageView.image = Asset.imagePlaceholder.image
             }
-            task.resume()
         }
     }
 
@@ -78,6 +86,12 @@ final class ProductCell: UITableViewCell {
     private lazy var addToCartButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(buyPressed), for: .touchUpInside)
+        button.setTitle(L10n.Catalog.buy, for: .normal)
+        button.setTitleColor(Asset.main.color, for: .normal)
+        button.setImage(Asset.productCart.image, for: .normal)
+        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0)
         return button
     }()
 
@@ -86,6 +100,11 @@ final class ProductCell: UITableViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+
+    @objc
+    private func buyPressed(_: UIButton) {
+        buyButton?(model)
+    }
 
     private func setup() {
         selectionStyle = .none
@@ -120,11 +139,6 @@ final class ProductCell: UITableViewCell {
         priceLabel.bottom(21).left(to: .right(16), of: contentImageView)
         // priceLabel.text = "9 000 ₽"
 
-        addToCartButton.setTitle(L10n.Product.buy, for: .normal)
-        addToCartButton.setTitleColor(Asset.main.color, for: .normal)
-        addToCartButton.setImage(Asset.productCart.image, for: .normal)
-        addToCartButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
-        addToCartButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0)
         addToCartButton.top(to: .top, of: priceLabel).bottom(21).right(16)
 
         separatorView.bottom().left(16).right(16).height(1)

@@ -4,21 +4,19 @@
 
 import Foundation
 
-struct ErrorResponse: Decodable {
+struct ProductResponse: Decodable {
     // MARK: Lifecycle
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        message = try container.decode(String.self, forKey: CodingKeys.message)
-        fields = try container.decode([FieldError].self, forKey: CodingKeys.fields)
+        product = try container.decode(Product.self, forKey: CodingKeys.product)
     }
 
     // MARK: Internal
 
     enum CodingKeys: String, CodingKey {
-        case message, fields
+        case product
     }
 
-    let message: String
-    let fields: [FieldError]?
+    let product: Product
 }

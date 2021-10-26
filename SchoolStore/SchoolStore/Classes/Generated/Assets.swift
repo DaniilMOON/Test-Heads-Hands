@@ -29,9 +29,11 @@ internal enum Asset {
   internal static let separator = ColorAsset(name: "separator")
   internal static let textPrimary = ColorAsset(name: "text.primary")
   internal static let textSecondary = ColorAsset(name: "text.secondary")
+  internal static let white = ColorAsset(name: "white")
   internal static let imagePlaceholder = ImageAsset(name: "ImagePlaceholder")
   internal static let fieldEye = ImageAsset(name: "field.eye")
   internal static let fieldEyeSlash = ImageAsset(name: "field.eye.slash")
+  internal static let navBack = ImageAsset(name: "nav.back")
   internal static let productCart = ImageAsset(name: "productCart")
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name

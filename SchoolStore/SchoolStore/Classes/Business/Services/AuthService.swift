@@ -22,10 +22,10 @@ final class AuthServiceImpl: AuthService {
 
     // MARK: Internal
 
-    typealias Authenticateed = DataResponse<AuthResponse>
+    typealias Authenticated = DataResponse<AuthResponse>
 
     func authenticate(user: String, with password: String, completion: ((Result<String, Error>) -> Void)?) {
-        networkProvider.mock(UserRequest.login(user: user, password: password)) { [weak self] (result: Result<Authenticateed, Error>) in
+        networkProvider.mock(UserRequest.login(user: user, password: password)) { [weak self] (result: Result<Authenticated, Error>) in
             switch result {
             case let .success(data):
                 let token = data.data.accessToken

@@ -24,6 +24,13 @@ internal enum L10n {
     internal static let password = L10n.tr("Localizable", "auth.password")
   }
 
+  internal enum Catalog {
+    /// Купить
+    internal static let buy = L10n.tr("Localizable", "catalog.buy")
+    /// Каталог
+    internal static let title = L10n.tr("Localizable", "catalog.title")
+  }
+
   internal enum Common {
     /// Поле пустое
     internal static let emptyField = L10n.tr("Localizable", "common.emptyField")
@@ -55,9 +62,15 @@ internal enum L10n {
     }
   }
 
-  internal enum Product {
-    /// Купить
-    internal static let buy = L10n.tr("Localizable", "product.buy")
+  internal enum OrderForm {
+    /// Дом
+    internal static let address = L10n.tr("Localizable", "orderForm.address")
+    /// Купить за
+    internal static let buyNow = L10n.tr("Localizable", "orderForm.buyNow")
+    /// Дата доставки
+    internal static let deliveryDate = L10n.tr("Localizable", "orderForm.deliveryDate")
+    /// Квартира
+    internal static let flatNumber = L10n.tr("Localizable", "orderForm.flatNumber")
   }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length

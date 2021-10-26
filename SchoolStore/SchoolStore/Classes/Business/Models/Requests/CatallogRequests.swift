@@ -5,8 +5,8 @@
 import Foundation
 
 enum CatalogRequest: Request {
-    case listOfProducts
-    case detailInfo(producttId: String)
+    case listOfProducts(offset: Int, limit: Int)
+    case detailInfo(String)
 
     // MARK: Internal
 
@@ -28,13 +28,31 @@ enum CatalogRequest: Request {
 
     var mock: Data? {
         switch self {
-        case .listOfProducts:
-            guard let path = Bundle.main.path(forResource: "listOfProducts", ofType: "json"),
-                  let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
-            else {
-                return nil
+        case let .listOfProducts(offset, _):
+            if offset == 0 {
+                guard let path = Bundle.main.path(forResource: "listOfProducts1", ofType: "json"),
+                      let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
+                else {
+                    return nil
+                }
+                return data
+
+            } else if 12 ... 24 ~= offset {
+                guard let path = Bundle.main.path(forResource: "listOfProducts2", ofType: "json"),
+                      let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
+                else {
+                    return nil
+                }
+                return data
+
+            } else {
+                guard let path = Bundle.main.path(forResource: "listOfProducts3", ofType: "json"),
+                      let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
+                else {
+                    return nil
+                }
+                return data
             }
-            return data
         case .detailInfo:
             guard let path = Bundle.main.path(forResource: "detailsInfo", ofType: "json"),
                   let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)

@@ -13,11 +13,13 @@ class OrderFormView: UIView {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
         setup()
+        createDatePicker()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setup()
+        createDatePicker()
     }
 
     // MARK: Internal
@@ -79,20 +81,49 @@ class OrderFormView: UIView {
     private lazy var addressInputField: InputField = {
         let field = InputField()
         field.translatesAutoresizingMaskIntoConstraints = false
+        field.title = L10n.OrderForm.address
         return field
     }()
 
     private lazy var flatNumberInputField: InputField = {
         let field = InputField()
         field.translatesAutoresizingMaskIntoConstraints = false
+        field.title = L10n.OrderForm.flatNumber
         return field
     }()
 
     private lazy var dateInputField: InputField = {
         let field = InputField()
         field.translatesAutoresizingMaskIntoConstraints = false
+        field.title = L10n.OrderForm.deliveryDate
         return field
     }()
+
+    private let datePicker = UIDatePicker()
+
+    @objc
+    private func doneAction() {
+        let dateFormatter = DateFormatter()
+
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+
+        dateInputField.text = dateFormatter.string(from: datePicker.date)
+        endEditing(true)
+    }
+
+    private func createDatePicker() {
+        datePicker.preferredDatePickerStyle = .wheels
+        datePicker.datePickerMode = .date
+        dateInputField.textField.inputView = datePicker
+
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(doneAction))
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolbar.setItems([flexSpace, doneButton], animated: true)
+        dateInputField.textField.inputAccessoryView = toolbar
+    }
 
     private func setup() {
         addSubview(previewImageView)
@@ -118,13 +149,10 @@ class OrderFormView: UIView {
         steperView.backgroundColor = .red
         steperView.bottom(to: .bottom(0), of: previewImageView).right(16).height(28).width(48 + 28 + 28)
 
-        addressInputField.title = L10n.OrderForm.address
         addressInputField.top(to: .bottom(48), of: previewImageView).left(16).right(16)
 
-        flatNumberInputField.title = L10n.OrderForm.flatNumber
         flatNumberInputField.top(to: .bottom(32), of: addressInputField).left(16).right(16)
 
-        dateInputField.title = L10n.OrderForm.deliveryDate
         dateInputField.top(to: .bottom(32), of: flatNumberInputField).left(16).right(16).bottom(60)
     }
 }

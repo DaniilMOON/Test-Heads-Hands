@@ -33,6 +33,12 @@ final class InputField: UIView, InputFieldProtocol {
 
     // MARK: Internal
 
+    private(set) lazy var textField: UITextField = {
+        let field = UITextField()
+        field.translatesAutoresizingMaskIntoConstraints = false
+        return field
+    }()
+
     @IBInspectable
     var title: String? {
         didSet {
@@ -86,12 +92,6 @@ final class InputField: UIView, InputFieldProtocol {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
-    }()
-
-    private lazy var textField: UITextField = {
-        let field = UITextField()
-        field.translatesAutoresizingMaskIntoConstraints = false
-        return field
     }()
 
     private lazy var errorLabel: UILabel = {

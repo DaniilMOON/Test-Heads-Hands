@@ -4,7 +4,7 @@
 
 import Foundation
 
-struct ProductBadge: Decodable {
+struct ProductBadge: Decodable, Hashable, Equatable {
     let value: String
     let color: String
 }

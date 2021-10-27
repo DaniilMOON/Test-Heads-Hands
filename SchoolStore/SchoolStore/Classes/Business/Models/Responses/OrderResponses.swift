@@ -4,19 +4,19 @@
 
 import Foundation
 
-struct CatalogResponse: Decodable {
+struct OrderResponse: Decodable {
     // MARK: Lifecycle
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        products = try container.decode([Product].self, forKey: CodingKeys.products)
+        orders = try container.decode([Order].self, forKey: CodingKeys.orders)
     }
 
     // MARK: Internal
 
     enum CodingKeys: String, CodingKey {
-        case products
+        case orders
     }
 
-    let products: [Product]
+    let orders: [Order]
 }

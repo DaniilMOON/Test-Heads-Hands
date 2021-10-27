@@ -96,6 +96,9 @@
 		EDF776C227286C0C00A550C8 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = EDF776C127286C0C00A550C8 /* Kingfisher */; };
 		EDF776C52728802400A550C8 /* OrderFormVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF776C42728802400A550C8 /* OrderFormVC.swift */; };
 		EDF776C7272880B400A550C8 /* OrderFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF776C6272880B400A550C8 /* OrderFormView.swift */; };
+		EDF776C92729570300A550C8 /* OrderResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF776C82729570300A550C8 /* OrderResponses.swift */; };
+		EDF776CB2729575D00A550C8 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF776CA2729575D00A550C8 /* Order.swift */; };
+		EDF776CD27295A4800A550C8 /* HistoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF776CC27295A4800A550C8 /* HistoryService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -186,6 +189,9 @@
 		EDF776BE27229B7F00A550C8 /* listOfProducts3.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = listOfProducts3.json; sourceTree = "<group>"; };
 		EDF776C42728802400A550C8 /* OrderFormVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderFormVC.swift; sourceTree = "<group>"; };
 		EDF776C6272880B400A550C8 /* OrderFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderFormView.swift; sourceTree = "<group>"; };
+		EDF776C82729570300A550C8 /* OrderResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderResponses.swift; sourceTree = "<group>"; };
+		EDF776CA2729575D00A550C8 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		EDF776CC27295A4800A550C8 /* HistoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -365,6 +371,7 @@
 				C21E1356270463C400867E2E /* AuthService.swift */,
 				C21E1352270460AE00867E2E /* DataService.swift */,
 				EDA1BFCF2717186D004D2AAD /* CatalogService.swift */,
+				EDF776CC27295A4800A550C8 /* HistoryService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -392,6 +399,7 @@
 				C2B96D4A270DE0A00012D0E8 /* FieldError.swift */,
 				EDA1BFD127178567004D2AAD /* ProductBadge.swift */,
 				EDA1BFD3271785CE004D2AAD /* ProductSizes.swift */,
+				EDF776CA2729575D00A550C8 /* Order.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -448,6 +456,7 @@
 				C2B96D48270DDE6F0012D0E8 /* ErrorResponse.swift */,
 				EDF776AF271EDD2200A550C8 /* CatalogResponse.swift */,
 				EDF776BA272293FF00A550C8 /* ProductResponse.swift */,
+				EDF776C82729570300A550C8 /* OrderResponses.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -460,14 +469,14 @@
 				C2B96D4D270DE9D80012D0E8 /* changeProfile.json */,
 				C2B96D52270DE9D80012D0E8 /* changeProfileBRerror.json */,
 				C2B96D53270DE9D80012D0E8 /* changeProfileForbidden.json */,
-				C2B96D59270DE9D80012D0E8 /* detailsInfo.json */,
 				C2B96D56270DE9D80012D0E8 /* getProfile.json */,
 				C2B96D58270DE9D80012D0E8 /* getProfileBRerror.json */,
 				C2B96D55270DE9D80012D0E8 /* getProfileForbidden.json */,
-				C2B96D51270DE9D80012D0E8 /* listOfOrders.json */,
+				C2B96D59270DE9D80012D0E8 /* detailsInfo.json */,
 				C2B96D50270DE9D80012D0E8 /* listOfProducts1.json */,
 				EDF776BC27229AC900A550C8 /* listOfProducts2.json */,
 				EDF776BE27229B7F00A550C8 /* listOfProducts3.json */,
+				C2B96D51270DE9D80012D0E8 /* listOfOrders.json */,
 				C2B96D57270DE9D80012D0E8 /* userBRerror.json */,
 				C2B96D4E270DE9D80012D0E8 /* userUEerror.json */,
 				C2B96D46270DDE360012D0E8 /* authFailed.json */,
@@ -690,10 +699,12 @@
 				C21E13592704647900867E2E /* Errors.swift in Sources */,
 				C2D720A727048AF000C40EA5 /* AuthResponse.swift in Sources */,
 				C27E0F1D270473A20015530B /* Plist.swift in Sources */,
+				EDF776CB2729575D00A550C8 /* Order.swift in Sources */,
 				C21E13512704604400867E2E /* AppState.swift in Sources */,
 				EDA1BFD02717186D004D2AAD /* CatalogService.swift in Sources */,
 				C2D720A427048AAF00C40EA5 /* DataResponse.swift in Sources */,
 				C27E0F1E270473A20015530B /* Assets.swift in Sources */,
+				EDF776C92729570300A550C8 /* OrderResponses.swift in Sources */,
 				EDF776B7271F60FB00A550C8 /* ProductView.swift in Sources */,
 				C2B96D49270DDE6F0012D0E8 /* ErrorResponse.swift in Sources */,
 				C2B96D41270DD9770012D0E8 /* SnackerStyle.swift in Sources */,
@@ -707,6 +718,7 @@
 				C21E1357270463C400867E2E /* AuthService.swift in Sources */,
 				EDF776B0271EDD2200A550C8 /* CatalogResponse.swift in Sources */,
 				C2D7209F2704855100C40EA5 /* RequestBuilder.swift in Sources */,
+				EDF776CD27295A4800A550C8 /* HistoryService.swift in Sources */,
 				EDA1BFCE271713CC004D2AAD /* Product.swift in Sources */,
 				C2D7209D270484E700C40EA5 /* RequestMethod.swift in Sources */,
 				C27E0F20270473A20015530B /* StoryboardScenes.swift in Sources */,

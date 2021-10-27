@@ -21,9 +21,9 @@ final class HistoryCell: UITableViewCell {
 
     // MARK: Internal
 
-    var model: String? {
+    var model: Order? {
         didSet {
-            orderLabel.text = model
+            orderLabel.text = model?.id
         }
     }
 

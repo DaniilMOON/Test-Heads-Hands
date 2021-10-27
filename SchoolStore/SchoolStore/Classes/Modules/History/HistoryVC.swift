@@ -17,32 +17,105 @@ final class HistoryVC: UIViewController {
         segmentedControl.left().right().safeArea { $0.top() }
         tableView.top(to: .bottom, of: segmentedControl).left().right().bottom()
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0) { [weak self] in
-            self?.items = [
-                "Заказ №123 от 19.09.21 18:03",
-                "Заказ №124 от 19.09.21 18:03",
-                "Заказ №125 от 19.09.21 18:03",
-                "Заказ №126 от 19.09.21 18:03",
-                "Заказ №127 от 19.09.21 18:03",
-            ]
-            self?.tableView.reloadData()
-        }
+        configTableView()
+        historyService?.getHistoryItems(with: 0, limit: 20, completion: { [weak self] result in
+            guard let self = self else {
+                return
+            }
+            switch result {
+            case let .success(products):
+                self.items = products
+            case .failure:
+                break
+            }
+        })
     }
 
     // MARK: Internal
 
     static let historyCellReuseId: String = HistoryCell.description()
 
-    var items: [String] = []
+    var items: [Order] = [] {
+        didSet {
+            snapshot(items)
+        }
+    }
+
+    func setup(with historyService: HistoryService, _ snacker: Snacker) {
+        self.historyService = historyService
+        self.snacker = snacker
+    }
+
+    func configTableView() {
+        dataSource = UITableViewDiffableDataSource<SimpleDiffableSection, Order>(
+            tableView: tableView,
+            cellProvider: { tableView, indexPath, model -> UITableViewCell? in
+                guard let cell = tableView.dequeueReusableCell(
+                    withIdentifier: Self.historyCellReuseId,
+                    for: indexPath
+                ) as? HistoryCell else {
+                    return nil
+                }
+                cell.model = model
+                return cell
+            }
+        )
+    }
+
+    func snapshot(_ items: [Order]) {
+        var snapshot = NSDiffableDataSourceSnapshot<SimpleDiffableSection, Order>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(items, toSection: .main)
+        dataSource?.apply(snapshot, animatingDifferences: false)
+    }
+
+    func loadNextPage() {
+        isLoadingNextPage = true
+        historyService?.getHistoryItems(with: items.count, limit: 12, completion: { [weak self] result in
+            guard let self = self else {
+                return
+            }
+            switch result {
+            case let .success(products):
+                self.items += products
+            case .failure:
+                break
+            }
+            self.isLoadingNextPage = false
+        })
+    }
+
+    func loadFooterView(load: Bool) {
+        if load {
+            let view = UIView()
+            view.frame.size = .init(width: view.frame.size.width, height: 60)
+            // view.startLoading(with: .smallBlue)
+            tableView.tableFooterView = view
+        } else {
+            tableView.tableFooterView = UIView()
+        }
+    }
 
     // MARK: Private
+
+    private enum SimpleDiffableSection: Int, Hashable {
+        case main
+    }
+
+    private var dataSource: UITableViewDiffableDataSource<SimpleDiffableSection, Order>?
+
+    private var snacker: Snacker?
+    private var historyService: HistoryService?
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
         tableView.delegate = self
-        tableView.dataSource = self
+        tableView.register(
+            HistoryCell.self,
+            forCellReuseIdentifier: Self.historyCellReuseId
+        )
         tableView.register(HistoryCell.self, forCellReuseIdentifier: Self.historyCellReuseId)
 
         return tableView
@@ -56,65 +129,36 @@ final class HistoryVC: UIViewController {
         return sc
     }()
 
+    private var isLoadingNextPage: Bool = false {
+        didSet {
+            loadFooterView(load: isLoadingNextPage)
+        }
+    }
+
     @objc
     private func selectSegment(segmentedControl: UISegmentedControl) {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
-            items = [
-                "Заказ №123 от 19.09.21 18:03",
-                "Заказ №124 от 19.09.21 18:03",
-                "Заказ №125 от 19.09.21 18:03",
-                "Заказ №126 от 19.09.21 18:03",
-                "Заказ №127 от 19.09.21 18:03",
-            ]
-            tableView.reloadData()
-        case 1:
-            items = [
-                "Заказ №123 от 19.09.21 18:03",
-                "Заказ №124 от 19.09.21 18:03",
-                "Заказ №127 от 19.09.21 18:03",
-            ]
-            tableView.reloadData()
+            break
         default:
             break
         }
     }
 }
 
-// MARK: UITableViewDelegate, UITableViewDataSource
+// MARK: UITableViewDelegate
 
-extension HistoryVC: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        items.count
-    }
+extension HistoryVC: UITableViewDelegate {
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate _: Bool) {
+        guard !isLoadingNextPage else { return }
+        let offset = scrollView.contentOffset.y
+        let height = scrollView.frame.size.height
+        let contentHeight = scrollView.contentSize.height
 
-    func numberOfSections(in _: UITableView) -> Int {
-        1
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: Self.historyCellReuseId, for: indexPath) as? HistoryCell else {
-            return UITableViewCell()
-        }
-        cell.model = items[indexPath.row]
-        return cell
-    }
-
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let alertController = UIAlertController(title: L10n.History.DeleteOrder.answer, message: nil, preferredStyle: .alert)
-
-            let DeleteAction = UIAlertAction(title: L10n.History.DeleteOrder.yes, style: .default) { (_) -> Void in
-                self.items.remove(at: indexPath.row)
-                tableView.deleteRows(at: [indexPath], with: .fade)
+        if scrollView == tableView {
+            if (offset + height) >= contentHeight {
+                loadNextPage()
             }
-
-            let CloseAction = UIAlertAction(title: L10n.History.DeleteOrder.no, style: .default) { (_) -> Void in }
-
-            alertController.addAction(DeleteAction)
-            alertController.addAction(CloseAction)
-
-            present(alertController, animated: true, completion: nil)
         }
     }
 }

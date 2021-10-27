@@ -4,7 +4,7 @@
 
 import Foundation
 
-struct Product: Decodable {
+struct Product: Decodable, Hashable, Equatable {
     let id: String
     let title: String
     let department: String

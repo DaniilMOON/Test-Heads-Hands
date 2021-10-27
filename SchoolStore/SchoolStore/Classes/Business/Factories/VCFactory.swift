@@ -37,8 +37,10 @@ enum VCFactory {
             switch rootVC {
             case let vc as ProfileVC:
                 vc.dataService = CoreFactory.dataService
-            case is HistoryVC:
-                break
+            case let vc as HistoryVC:
+                let historyService = CoreFactory.buildHistoryService()
+                let snacker = CoreFactory.snacker
+                vc.setup(with: historyService, snacker)
             case let vc as CatalogVC:
                 let catalogService = CoreFactory.buildCatalogService()
                 let snacker = CoreFactory.snacker

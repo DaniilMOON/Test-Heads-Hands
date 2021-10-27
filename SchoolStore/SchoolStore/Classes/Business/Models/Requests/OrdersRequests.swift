@@ -6,7 +6,7 @@ import Foundation
 
 enum OrdersRequest: Request {
     case arrangeOrder(productId: String, size: String, quantity: String, house: String, apartment: String, etd: String)
-    case listOfOrders
+    case listOfOrders(offset: Int, limit: Int)
     case cancel
 
     // MARK: Internal

@@ -16,11 +16,15 @@ final class CatalogVC: UIViewController {
 
         view.addSubview(tableView)
         tableView.top().left().right().bottom()
-        catalogService?.getProductList(with: 0, limit: 20, completion: { result in
+
+        configTableView()
+        catalogService?.getProductList(with: 0, limit: 20, completion: { [weak self] result in
+            guard let self = self else {
+                return
+            }
             switch result {
-            case let .success(items):
-                self.items = items
-                self.tableView.reloadData()
+            case let .success(products):
+                self.items = products
             case .failure:
                 break
             }
@@ -31,16 +35,94 @@ final class CatalogVC: UIViewController {
 
     static let productCellReuseId: String = ProductCell.description()
 
-    var items: [Product] = []
-
-    var snacker: Snacker?
+    var items: [Product] = [] {
+        didSet {
+            // snapshot(Array(Set(items)))
+            snapshot(items)
+        }
+    }
 
     func setup(with catalogService: CatalogService, _ snacker: Snacker) {
         self.catalogService = catalogService
         self.snacker = snacker
     }
 
+    func configTableView() {
+        dataSource = UITableViewDiffableDataSource<SimpleDiffableSection, Product>(
+            tableView: tableView,
+            cellProvider: { tableView, indexPath, model -> UITableViewCell? in
+                guard let cell = tableView.dequeueReusableCell(
+                    withIdentifier: Self.productCellReuseId,
+                    for: indexPath
+                ) as? ProductCell else {
+                    return nil
+                }
+                cell.model = model
+                cell.buyButton = { model in
+                    guard let product = model else {
+                        return
+                    }
+                    self.catalogService?.getProduct(with: product.id, completion: { [weak self] result in
+                        guard let self = self else {
+                            return
+                        }
+                        switch result {
+                        case let .success(model):
+                            debugPrint("Buy to \(model.id)")
+                            self.navigationController?.pushViewController(VCFactory.buildOrderFormVC(with: model), animated: true)
+                        case let .failure(error):
+                            self.snacker?.show(snack: error.localizedDescription, with: .error)
+                        }
+                    })
+                }
+                return cell
+            }
+        )
+    }
+
+    func snapshot(_ items: [Product]) {
+        var snapshot = NSDiffableDataSourceSnapshot<SimpleDiffableSection, Product>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(items, toSection: .main)
+        dataSource?.apply(snapshot, animatingDifferences: false)
+    }
+
+    func loadNextPage() {
+        isLoadingNextPage = true
+        catalogService?.getProductList(with: items.count, limit: 12, completion: { [weak self] result in
+            guard let self = self else {
+                return
+            }
+            switch result {
+            case let .success(products):
+                self.items += products
+            case .failure:
+                break
+            }
+            self.isLoadingNextPage = false
+        })
+    }
+
+    func loadFooterView(load: Bool) {
+        if load {
+            let view = UIView()
+            view.frame.size = .init(width: view.frame.size.width, height: 60)
+            // view.startLoading(with: .smallBlue)
+            tableView.tableFooterView = view
+        } else {
+            tableView.tableFooterView = UIView()
+        }
+    }
+
     // MARK: Private
+
+    private enum SimpleDiffableSection: Int, Hashable {
+        case main
+    }
+
+    private var snacker: Snacker?
+
+    private var dataSource: UITableViewDiffableDataSource<SimpleDiffableSection, Product>?
 
     private var catalogService: CatalogService?
 
@@ -49,47 +131,34 @@ final class CatalogVC: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
         tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(ProductCell.self, forCellReuseIdentifier: Self.productCellReuseId)
-
+        tableView.register(
+            ProductCell.self,
+            forCellReuseIdentifier: Self.productCellReuseId
+        )
         return tableView
     }()
+
+    private var isLoadingNextPage: Bool = false {
+        didSet {
+            loadFooterView(load: isLoadingNextPage)
+        }
+    }
 }
 
-// MARK: UITableViewDelegate, UITableViewDataSource
+// MARK: UITableViewDelegate
 
-extension CatalogVC: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        items.count
-    }
+extension CatalogVC: UITableViewDelegate {
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate _: Bool) {
+        guard !isLoadingNextPage else { return }
+        let offset = scrollView.contentOffset.y
+        let height = scrollView.frame.size.height
+        let contentHeight = scrollView.contentSize.height
 
-    func numberOfSections(in _: UITableView) -> Int {
-        1
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: Self.productCellReuseId, for: indexPath) as? ProductCell else {
-            return UITableViewCell()
-        }
-        cell.model = items[indexPath.row]
-        cell.buyButton = { model in
-            guard let product = model else {
-                return
+        if scrollView == tableView {
+            if (offset + height) >= contentHeight {
+                loadNextPage()
             }
-            self.catalogService?.getProduct(with: product.id, completion: { [weak self] result in
-                guard let self = self else {
-                    return
-                }
-                switch result {
-                case let .success(model):
-                    debugPrint("Transition buy to \(model.id)")
-                    self.navigationController?.pushViewController(VCFactory.buildOrderFormVC(with: model), animated: true)
-                case let .failure(error):
-                    self.snacker?.show(snack: error.localizedDescription, with: .error)
-                }
-            })
         }
-        return cell
     }
 
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {

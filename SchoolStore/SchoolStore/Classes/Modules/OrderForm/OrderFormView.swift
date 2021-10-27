@@ -99,7 +99,11 @@ class OrderFormView: UIView {
         return field
     }()
 
-    private let datePicker = UIDatePicker()
+    private let datePicker: UIDatePicker = {
+        let datePicker = UIDatePicker()
+        datePicker.translatesAutoresizingMaskIntoConstraints = false
+        return datePicker
+    }()
 
     @objc
     private func doneAction() {
@@ -117,7 +121,11 @@ class OrderFormView: UIView {
         datePicker.datePickerMode = .date
         dateInputField.textField.inputView = datePicker
 
-        let toolbar = UIToolbar()
+        let toolbar: UIToolbar = {
+            let toolbar = UIToolbar()
+            toolbar.translatesAutoresizingMaskIntoConstraints = false
+            return toolbar
+        }()
         toolbar.sizeToFit()
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(doneAction))
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)

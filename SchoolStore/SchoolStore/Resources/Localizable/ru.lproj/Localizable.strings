@@ -44,3 +44,8 @@
 "profile.settings" = "Настройки";
 "profile.logout" = "Выйти";
 
+"profile.alert.question" = "Вы действительно хотите выйти?";
+"profile.alert.exit" = "Выйти";
+"profile.alert.cancel" = "Отмена";
+
+

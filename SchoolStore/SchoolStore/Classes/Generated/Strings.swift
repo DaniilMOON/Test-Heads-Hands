@@ -119,6 +119,14 @@ internal enum L10n {
     internal static let myOrder = L10n.tr("Localizable", "profile.myOrder")
     /// Настройки
     internal static let settings = L10n.tr("Localizable", "profile.settings")
+    internal enum Alert {
+      /// Отмена
+      internal static let cancel = L10n.tr("Localizable", "profile.alert.cancel")
+      /// Выйти
+      internal static let exit = L10n.tr("Localizable", "profile.alert.exit")
+      /// Вы действительно хотите выйти?
+      internal static let question = L10n.tr("Localizable", "profile.alert.question")
+    }
   }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length

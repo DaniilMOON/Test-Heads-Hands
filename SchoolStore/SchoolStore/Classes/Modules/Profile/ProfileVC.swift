@@ -159,8 +159,15 @@ class ProfileVC: UIViewController {
 
     @objc
     private func logoutPressed(_: Any) {
-        dataService?.appState.accessToken = nil
-        UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.rootViewController = VCFactory.buildAuthVC()
+        let alert = UIAlertController(title: L10n.Profile.Alert.question, message: "", preferredStyle: .alert)
+
+        alert.addAction(UIAlertAction(title: L10n.Profile.Alert.exit, style: .default) { _ in
+            self.dataService?.appState.accessToken = nil
+            UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.rootViewController = VCFactory.buildAuthVC()
+        })
+        alert.addAction(UIAlertAction(title: L10n.Profile.Alert.cancel, style: .cancel, handler: nil))
+
+        present(alert, animated: true)
     }
 
     @objc

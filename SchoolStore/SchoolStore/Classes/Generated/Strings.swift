@@ -111,6 +111,15 @@ internal enum L10n {
     /// в
     internal static let `in` = L10n.tr("Localizable", "pretext.in")
   }
+
+  internal enum Profile {
+    /// Выйти
+    internal static let logout = L10n.tr("Localizable", "profile.logout")
+    /// Мои заказы
+    internal static let myOrder = L10n.tr("Localizable", "profile.myOrder")
+    /// Настройки
+    internal static let settings = L10n.tr("Localizable", "profile.settings")
+  }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces

@@ -40,3 +40,7 @@
 "orderForm.deliveryDate" = "Дата доставки";
 "orderForm.buyNow" = "Купить за";
 
+"profile.myOrder" = "Мои заказы";
+"profile.settings" = "Настройки";
+"profile.logout" = "Выйти";
+

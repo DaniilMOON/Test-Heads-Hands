@@ -12,6 +12,7 @@ final class HistoryVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         view.addSubview(segmentedControl)
         view.addSubview(tableView)
         segmentedControl.left().right().safeArea { $0.top() }

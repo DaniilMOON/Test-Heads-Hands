@@ -26,6 +26,7 @@ internal enum Asset {
   internal static let fieldError = ColorAsset(name: "field.error")
   internal static let fieldText = ColorAsset(name: "field.text")
   internal static let grey = ColorAsset(name: "grey")
+  internal static let logoutButton = ColorAsset(name: "logoutButton")
   internal static let main = ColorAsset(name: "main")
   internal static let statusCancelled = ColorAsset(name: "status.cancelled")
   internal static let statusInWork = ColorAsset(name: "status.inWork")
@@ -35,8 +36,11 @@ internal enum Asset {
   internal static let imagePlaceholder = ImageAsset(name: "ImagePlaceholder")
   internal static let fieldEye = ImageAsset(name: "field.eye")
   internal static let fieldEyeSlash = ImageAsset(name: "field.eye.slash")
+  internal static let logout = ImageAsset(name: "logout")
+  internal static let myOrder = ImageAsset(name: "myOrder")
   internal static let navBack = ImageAsset(name: "nav.back")
   internal static let productCart = ImageAsset(name: "productCart")
+  internal static let settings = ImageAsset(name: "settings")
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 

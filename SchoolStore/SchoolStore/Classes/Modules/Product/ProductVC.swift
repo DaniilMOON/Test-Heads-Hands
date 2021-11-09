@@ -12,7 +12,7 @@ class ProductVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         view.addSubview(scrollView)
-        scrollView.safeArea { $0.top(16).left().right().bottom(16) }
+        scrollView.safeArea { $0.top().left().right().bottom(16) }
 
         scrollView.addSubview(detalInfoProduct)
         detalInfoProduct.top().left().right().bottom().width(as: scrollView)

@@ -233,7 +233,7 @@ class ProductView: UIView {
         addSubview(detailsLabel)
 
         // mainImageView.image = Asset.imagePlaceholder.image
-        mainImageView.top().centerX().width(284).height(284)
+        mainImageView.top(16).centerX().width(284).height(284)
 
         scrollView.addSubview(previewsStackView)
 

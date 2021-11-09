@@ -11,7 +11,7 @@ class ProfileView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = Asset.main.color
+        backgroundColor = Asset.main.color.withAlphaComponent(1)
         setup()
     }
 
@@ -52,8 +52,6 @@ class ProfileView: UIView {
     private lazy var avatarProfile: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.layer.masksToBounds = false
-        image.layer.cornerRadius = image.frame.height / 2
         return image
     }()
 
@@ -78,7 +76,9 @@ class ProfileView: UIView {
             .top(0)
             .centerX()
             .height(90)
-            .height(90)
+            .width(90)
+        avatarProfile.layer.cornerRadius = 45
+        avatarProfile.clipsToBounds = true
 
         nameLabel
             .top(to: .bottom(16), of: avatarProfile)

@@ -4,6 +4,14 @@
 
 import Foundation
 
+// MARK: - OrderStatus
+
+enum OrderStatus: String, Decodable, Hashable, Equatable {
+    case inWork = "in_work", done, cancelled
+}
+
+// MARK: - Order
+
 struct Order: Decodable, Hashable, Equatable {
     let id: String
     let number: Int
@@ -14,5 +22,5 @@ struct Order: Decodable, Hashable, Equatable {
     let createdAt: String
     let etd: String
     let deliveryAddress: String
-    let status: String
+    let status: OrderStatus
 }

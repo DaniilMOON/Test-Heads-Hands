@@ -35,6 +35,28 @@ final class CatalogVC: UIViewController {
 
     static let productCellReuseId: String = ProductCell.description()
 
+    var loadingActivityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView()
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+
+        indicator.style = .large
+        indicator.color = .black
+
+        // The indicator should be animating when
+        // the view appears.
+        indicator.startAnimating()
+
+        // Setting the autoresizing mask to flexible for all
+        // directions will keep the indicator in the center
+        // of the view and properly handle rotation.
+        indicator.autoresizingMask = [
+            .flexibleLeftMargin, .flexibleRightMargin,
+            .flexibleTopMargin, .flexibleBottomMargin,
+        ]
+
+        return indicator
+    }()
+
     var items: [Product] = [] {
         didSet {
             // snapshot(Array(Set(items)))
@@ -89,18 +111,20 @@ final class CatalogVC: UIViewController {
 
     func loadNextPage() {
         isLoadingNextPage = true
-        catalogService?.getProductList(with: items.count, limit: 12, completion: { [weak self] result in
-            guard let self = self else {
-                return
-            }
-            switch result {
-            case let .success(products):
-                self.items += products
-            case .failure:
-                break
-            }
-            self.isLoadingNextPage = false
-        })
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5) {
+            self.catalogService?.getProductList(with: self.items.count, limit: 12, completion: { [weak self] result in
+                guard let self = self else {
+                    return
+                }
+                switch result {
+                case let .success(products):
+                    self.items += products
+                case .failure:
+                    break
+                }
+                self.isLoadingNextPage = false
+            })
+        }
     }
 
     func loadFooterView(load: Bool) {
@@ -108,6 +132,8 @@ final class CatalogVC: UIViewController {
             let view = UIView()
             view.frame.size = .init(width: view.frame.size.width, height: 60)
             // view.startLoading(with: .smallBlue)
+            view.addSubview(loadingActivityIndicator)
+            loadingActivityIndicator.centerY().centerX()
             tableView.tableFooterView = view
         } else {
             tableView.tableFooterView = UIView()

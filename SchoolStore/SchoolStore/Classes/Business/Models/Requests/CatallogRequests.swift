@@ -37,7 +37,7 @@ enum CatalogRequest: Request {
                 }
                 return data
 
-            } else if 12 ... 24 ~= offset {
+            } else if 12 ... 23 ~= offset {
                 guard let path = Bundle.main.path(forResource: "listOfProducts2", ofType: "json"),
                       let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
                 else {

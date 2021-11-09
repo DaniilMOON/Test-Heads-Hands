@@ -22,16 +22,22 @@ final class CatalogServiceImpl: CatalogService {
 
     // MARK: Internal
 
-    func getProductList(with offset: Int, limit: Int, completion: ((Result<[Product], Error>) -> Void)?) {
-        networkProvider.mock(CatalogRequest.listOfProducts(offset: offset, limit: limit), completion: {
-            (result: Result<DataResponse<CatalogResponse>, Error>) in
-            switch result {
-            case .success:
-                completion?(result.map { obj in obj.data.products })
-            case let .failure(error):
-                completion?(Result.failure(error))
+    func getProductList(
+        with offset: Int,
+        limit: Int,
+        completion: ((Result<[Product], Error>) -> Void)?
+    ) {
+        networkProvider.mock(
+            CatalogRequest.listOfProducts(offset: offset, limit: limit), completion: {
+                (result: Result<DataResponse<CatalogResponse>, Error>) in
+                switch result {
+                case .success:
+                    completion?(result.map(\.data.products))
+                case let .failure(error):
+                    completion?(Result.failure(error))
+                }
             }
-        })
+        )
     }
 
     func getProduct(with productId: String, completion: ((Result<Product, Error>) -> Void)?) {

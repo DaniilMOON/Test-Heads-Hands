@@ -46,6 +46,8 @@ internal enum L10n {
   }
 
   internal enum History {
+    /// Мои заказы
+    internal static let title = L10n.tr("Localizable", "history.title")
     internal enum DeleteOrder {
       /// Вы точно хотите отменить заказ?
       internal static let answer = L10n.tr("Localizable", "history.deleteOrder.answer")
@@ -54,11 +56,39 @@ internal enum L10n {
       /// Да
       internal static let yes = L10n.tr("Localizable", "history.deleteOrder.yes")
     }
+    internal enum DeliveryTimeLabel {
+      internal enum Cancelled {
+        /// Был отменен
+        internal static let dateCancelled = L10n.tr("Localizable", "history.deliveryTimeLabel.cancelled.dateCancelled")
+      }
+      internal enum Done {
+        /// Был доставлен
+        internal static let dateDone = L10n.tr("Localizable", "history.deliveryTimeLabel.done.dateDone")
+      }
+      internal enum InWork {
+        /// Адрес доставки:
+        internal static let address = L10n.tr("Localizable", "history.deliveryTimeLabel.inWork.address")
+        /// Дата доставки:
+        internal static let delieryDate = L10n.tr("Localizable", "history.deliveryTimeLabel.inWork.delieryDate")
+      }
+    }
+    internal enum OrderLabel {
+      /// Заказ №
+      internal static let number = L10n.tr("Localizable", "history.orderLabel.number")
+    }
     internal enum SegmentedControl {
       /// АКТИВНЫЕ
       internal static let active = L10n.tr("Localizable", "history.segmentedControl.active")
       /// ВСЕ
       internal static let all = L10n.tr("Localizable", "history.segmentedControl.all")
+    }
+    internal enum Status {
+      /// Отменен
+      internal static let cancelled = L10n.tr("Localizable", "history.status.cancelled")
+      /// Доставлен
+      internal static let done = L10n.tr("Localizable", "history.status.done")
+      /// В работе
+      internal static let inWork = L10n.tr("Localizable", "history.status.inWork")
     }
   }
 
@@ -71,6 +101,15 @@ internal enum L10n {
     internal static let deliveryDate = L10n.tr("Localizable", "orderForm.deliveryDate")
     /// Квартира
     internal static let flatNumber = L10n.tr("Localizable", "orderForm.flatNumber")
+    /// Оформление заказа
+    internal static let title = L10n.tr("Localizable", "orderForm.title")
+  }
+
+  internal enum Pretext {
+    /// от
+    internal static let from = L10n.tr("Localizable", "pretext.from")
+    /// в
+    internal static let `in` = L10n.tr("Localizable", "pretext.in")
   }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length

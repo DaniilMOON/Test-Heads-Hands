@@ -4,7 +4,7 @@
 
 import Foundation
 
-struct OrderResponse: Decodable {
+struct HistoryResponse: Decodable {
     // MARK: Lifecycle
 
     public init(from decoder: Decoder) throws {

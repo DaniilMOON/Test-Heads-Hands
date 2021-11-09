@@ -142,6 +142,6 @@ final class ProductCell: UITableViewCell {
         addToCartButton.top(to: .top, of: priceLabel).bottom(21).right(16)
 
         separatorView.bottom().left(16).right(16).height(1)
-        separatorView.backgroundColor = Asset.separator.color
+        separatorView.backgroundColor = Asset.grey.color
     }
 }

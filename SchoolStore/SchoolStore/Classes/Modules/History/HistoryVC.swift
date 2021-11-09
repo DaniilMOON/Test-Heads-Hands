@@ -15,6 +15,8 @@ final class HistoryVC: UIViewController {
         view.addSubview(segmentedControl)
         view.addSubview(tableView)
         segmentedControl.left().right().safeArea { $0.top() }
+        segmentedControl.addTarget(self, action: #selector(selectSegment(_:)), for: .valueChanged)
+
         tableView.top(to: .bottom, of: segmentedControl).left().right().bottom()
 
         configTableView()
@@ -35,14 +37,39 @@ final class HistoryVC: UIViewController {
 
     static let historyCellReuseId: String = HistoryCell.description()
 
+    var loadingActivityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView()
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+
+        indicator.style = .large
+        indicator.color = .black
+
+        // The indicator should be animating when
+        // the view appears.
+        indicator.startAnimating()
+
+        // Setting the autoresizing mask to flexible for all
+        // directions will keep the indicator in the center
+        // of the view and properly handle rotation.
+        indicator.autoresizingMask = [
+            .flexibleLeftMargin, .flexibleRightMargin,
+            .flexibleTopMargin, .flexibleBottomMargin,
+        ]
+
+        return indicator
+    }()
+
+    var itemsPred: [Order] = []
+
     var items: [Order] = [] {
         didSet {
             snapshot(items)
         }
     }
 
-    func setup(with historyService: HistoryService, _ snacker: Snacker) {
+    func setup(with historyService: HistoryService, _ catalogService: CatalogService, _ snacker: Snacker) {
         self.historyService = historyService
+        self.catalogService = catalogService
         self.snacker = snacker
     }
 
@@ -57,6 +84,19 @@ final class HistoryVC: UIViewController {
                     return nil
                 }
                 cell.model = model
+
+                self.catalogService?.getProduct(with: model.id, completion: { [weak self] result in
+                    guard let self = self else {
+                        return
+                    }
+                    switch result {
+                    case let .success(product):
+                        debugPrint("Get product \(product.id)")
+                        cell.title = product.title
+                    case let .failure(error):
+                        self.snacker?.show(snack: error.localizedDescription, with: .error)
+                    }
+                })
                 return cell
             }
         )
@@ -71,18 +111,20 @@ final class HistoryVC: UIViewController {
 
     func loadNextPage() {
         isLoadingNextPage = true
-        historyService?.getHistoryItems(with: items.count, limit: 12, completion: { [weak self] result in
-            guard let self = self else {
-                return
-            }
-            switch result {
-            case let .success(products):
-                self.items += products
-            case .failure:
-                break
-            }
-            self.isLoadingNextPage = false
-        })
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5) {
+            self.historyService?.getHistoryItems(with: self.items.count, limit: 12, completion: { [weak self] result in
+                guard let self = self else {
+                    return
+                }
+                switch result {
+                case let .success(products):
+                    self.items += products
+                case .failure:
+                    break
+                }
+                self.isLoadingNextPage = false
+            })
+        }
     }
 
     func loadFooterView(load: Bool) {
@@ -90,6 +132,8 @@ final class HistoryVC: UIViewController {
             let view = UIView()
             view.frame.size = .init(width: view.frame.size.width, height: 60)
             // view.startLoading(with: .smallBlue)
+            view.addSubview(loadingActivityIndicator)
+            loadingActivityIndicator.centerY().centerX()
             tableView.tableFooterView = view
         } else {
             tableView.tableFooterView = UIView()
@@ -106,6 +150,7 @@ final class HistoryVC: UIViewController {
 
     private var snacker: Snacker?
     private var historyService: HistoryService?
+    private var catalogService: CatalogService?
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
@@ -125,7 +170,6 @@ final class HistoryVC: UIViewController {
         let sc = UISegmentedControl(items: [L10n.History.SegmentedControl.all, L10n.History.SegmentedControl.active])
         sc.translatesAutoresizingMaskIntoConstraints = false
         sc.selectedSegmentIndex = 0
-        sc.addTarget(self, action: #selector(selectSegment), for: .valueChanged)
         return sc
     }()
 
@@ -136,10 +180,31 @@ final class HistoryVC: UIViewController {
     }
 
     @objc
-    private func selectSegment(segmentedControl: UISegmentedControl) {
-        switch segmentedControl.selectedSegmentIndex {
+    private func selectSegment(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
         case 0:
+            getItems(index: sender.selectedSegmentIndex)
+        case 1:
+            getItems(index: sender.selectedSegmentIndex)
+        default:
             break
+        }
+    }
+
+    private func getItems(index: Int) {
+        debugPrint(index, segmentedControl.selectedSegmentIndex)
+        switch index {
+        case 0:
+            items = itemsPred
+            itemsPred = []
+        case 1:
+            itemsPred = items
+            items = []
+            itemsPred.forEach { product in
+                if product.status == .inWork {
+                    items.append(product)
+                }
+            }
         default:
             break
         }
@@ -157,7 +222,9 @@ extension HistoryVC: UITableViewDelegate {
 
         if scrollView == tableView {
             if (offset + height) >= contentHeight {
-                loadNextPage()
+                if segmentedControl.selectedSegmentIndex == 0 {
+                    loadNextPage()
+                }
             }
         }
     }

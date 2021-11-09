@@ -23,8 +23,9 @@ enum VCFactory {
 
     static func buildOrderFormVC(with product: Product) -> UIViewController {
         let vc = OrderFormVC()
+        let orderService = CoreFactory.buildOrderService()
         let snacker = CoreFactory.snacker
-        vc.setup(with: product, snacker)
+        vc.setup(with: product, orderService, snacker)
         return vc
     }
 
@@ -37,10 +38,12 @@ enum VCFactory {
             switch rootVC {
             case let vc as ProfileVC:
                 vc.dataService = CoreFactory.dataService
+                vc.authService = CoreFactory.buildAuthService()
             case let vc as HistoryVC:
                 let historyService = CoreFactory.buildHistoryService()
+                let catalogService = CoreFactory.buildCatalogService()
                 let snacker = CoreFactory.snacker
-                vc.setup(with: historyService, snacker)
+                vc.setup(with: historyService, catalogService, snacker)
             case let vc as CatalogVC:
                 let catalogService = CoreFactory.buildCatalogService()
                 let snacker = CoreFactory.snacker

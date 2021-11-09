@@ -15,28 +15,8 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e23-sF-PGD">
-                                <rect key="frame" x="140.5" y="413.5" width="133" height="74"/>
-                                <color key="backgroundColor" systemColor="systemBlueColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="74" id="Coc-Nf-egc"/>
-                                    <constraint firstAttribute="width" constant="133" id="Ig8-aR-dYC"/>
-                                </constraints>
-                                <state key="normal" title="logout">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="logoutPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Isl-Rm-IIf"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="e23-sF-PGD" firstAttribute="centerY" secondItem="vDu-zF-Fre" secondAttribute="centerY" id="foJ-Wv-2Zo"/>
-                            <constraint firstItem="e23-sF-PGD" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="w97-hQ-NXU"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="FSw-1b-LUU"/>
                 </viewController>
@@ -69,9 +49,6 @@
         <image name="person" catalog="system" width="128" height="117"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

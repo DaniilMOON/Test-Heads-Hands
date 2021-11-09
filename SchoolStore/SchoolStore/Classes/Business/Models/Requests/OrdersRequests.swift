@@ -52,13 +52,23 @@ enum OrdersRequest: Request {
                 return nil
             }
             return data
-        case .listOfOrders:
-            guard let path = Bundle.main.path(forResource: "listOfOrders", ofType: "json"),
-                  let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
-            else {
-                return nil
+        case let .listOfOrders(offset, _):
+            if offset == 0 {
+                guard let path = Bundle.main.path(forResource: "listOfOrders", ofType: "json"),
+                      let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
+                else {
+                    return nil
+                }
+                return data
+
+            } else {
+                guard let path = Bundle.main.path(forResource: "listOfOrders2", ofType: "json"),
+                      let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
+                else {
+                    return nil
+                }
+                return data
             }
-            return data
         case .cancel:
             guard let path = Bundle.main.path(forResource: "cancelOrder", ofType: "json"),
                   let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)

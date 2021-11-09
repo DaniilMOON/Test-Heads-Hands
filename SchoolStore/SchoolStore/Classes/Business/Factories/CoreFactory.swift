@@ -24,4 +24,8 @@ enum CoreFactory {
     static func buildHistoryService() -> HistoryService {
         HistoryServiceImpl(networkProvider: Self.networkProvider)
     }
+
+    static func buildOrderService() -> OrderService {
+        OrderServiceImpl(networkProvider: Self.networkProvider)
+    }
 }

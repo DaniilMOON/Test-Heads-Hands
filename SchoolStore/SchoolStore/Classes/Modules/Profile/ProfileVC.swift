@@ -10,24 +10,36 @@ class ProfileVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        view.addSubview(profileView)
+        profileView.safeArea { $0.top().left().right() }
+
+//        authService?.getProfile(completion: { [weak self] (result: Result<String, Error>) in
+//            switch result {
+//            case .success:
+//                UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.rootViewController = VCFactory.buildTabBarVC()
+//            case let .failure(error):
+//                self?.handle(error: error)
+//            }
+//        })
     }
-
-    /*
-     // MARK: - Navigation
-
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         // Get the new view controller using segue.destination.
-         // Pass the selected object to the new view controller.
-     }
-     */
 
     // MARK: Internal
 
     var dataService: DataService?
+    var authService: AuthService?
 
-    @IBAction func logoutPressed(_: Any) {
+    var profile: Profile?
+
+    // MARK: Private
+
+    private var profileView: ProfileView = {
+        let pv = ProfileView()
+        pv.translatesAutoresizingMaskIntoConstraints = false
+        return pv
+    }()
+
+    @objc
+    private func logoutPressed(_: Any) {
         dataService?.appState.accessToken = nil
         UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.rootViewController = VCFactory.buildAuthVC()
     }

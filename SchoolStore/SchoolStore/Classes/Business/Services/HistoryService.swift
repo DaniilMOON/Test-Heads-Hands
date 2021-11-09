@@ -21,13 +21,19 @@ final class HistoryServiceImpl: HistoryService {
 
     // MARK: Internal
 
-    func getHistoryItems(with offset: Int, limit: Int, completion: ((Result<[Order], Error>) -> Void)?) {
+    typealias Orders = DataResponse<HistoryResponse>
+
+    func getHistoryItems(
+        with offset: Int,
+        limit: Int,
+        completion: ((Result<[Order], Error>) -> Void)?
+    ) {
         networkProvider.mock(
             OrdersRequest.listOfOrders(offset: offset, limit: limit)
-        ) { (result: Result<DataResponse<OrderResponse>, Error>) in
+        ) { (result: Result<Orders, Error>) in
             switch result {
             case .success:
-                completion?(result.map { obj in obj.data.orders })
+                completion?(result.map(\.data.orders))
             case let .failure(error):
                 completion?(Result.failure(error))
             }

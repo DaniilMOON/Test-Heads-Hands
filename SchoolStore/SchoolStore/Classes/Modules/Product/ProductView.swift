@@ -91,6 +91,9 @@ class ProductView: UIView {
         formatter.locale = Locale(identifier: "ru_RU")
         priceLabel.text = formatter.string(from: price)
 
+        badgeLabel.text = product.badge.value
+        badgeLabel.backgroundColor = hexStringToUIColor(hex: product.badge.color)
+
         titleLabel.text = product.title
         departmentLabel.text = product.department
 
@@ -137,9 +140,13 @@ class ProductView: UIView {
         return label
     }()
 
-    private lazy var badgeLabel: UILabel = {
-        let label = UILabel()
+    private lazy var badgeLabel: PaddingLabel = {
+        let label = PaddingLabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.paddingLeft = 12
+        label.paddingRight = 12
+        label.paddingTop = 2
+        label.paddingBottom = 2
         return label
     }()
 
@@ -178,6 +185,30 @@ class ProductView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+
+    private func hexStringToUIColor(hex: String) -> UIColor? {
+        var hexString: String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+
+        if hexString.hasPrefix("#") {
+            hexString.remove(at: hexString.startIndex)
+        }
+
+        if hexString.count != 8 {
+            while hexString.count != 8 {
+                hexString += "F"
+            }
+        }
+
+        var rgbValue: UInt64 = 0
+        Scanner(string: hexString).scanHexInt64(&rgbValue)
+
+        return UIColor(
+            red: CGFloat((rgbValue & 0xFF00_0000) >> 24) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF_0000) >> 16) / 255.0,
+            blue: CGFloat((rgbValue & 0x0000_FF00) >> 8) / 255.0,
+            alpha: CGFloat(rgbValue & 0x0000_00FF) / 255.0
+        )
+    }
 
     @objc
     private func previewDidTap(_ sender: UIButton) {
@@ -231,9 +262,11 @@ class ProductView: UIView {
         priceLabel.top(to: .bottom(20), of: scrollView).left(16)
 
         // badgeLabel.text = "Хит сезона"
-        badgeLabel.backgroundColor = .red
+        // badgeLabel.backgroundColor = .red
+        badgeLabel.font = UIFont(name: "Roboto-Regular", size: 20)
+        badgeLabel.textColor = Asset.white.color
         badgeLabel.layer.masksToBounds = true
-        badgeLabel.layer.cornerRadius = 16
+        badgeLabel.layer.cornerRadius = 12
         badgeLabel.right(16).centerY(0, to: priceLabel)
 
         // titleLabel.text = "Men's Nike Tom Brady Red Tampa Bay Buccaneers Super Bowl LV Bound Game Jersey"
@@ -260,7 +293,7 @@ class ProductView: UIView {
         descriptionLabel.numberOfLines = 0
         descriptionLabel.top(to: .bottom(16), of: sizeLabel).left(16).right(16)
 
-        separatorView.backgroundColor = Asset.separator.color
+        separatorView.backgroundColor = Asset.grey.color
         separatorView.top(to: .bottom(16), of: descriptionLabel).left(16).right(16).height(1)
 
         /* detailsLabel

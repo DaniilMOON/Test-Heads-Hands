@@ -18,8 +18,8 @@
 
 "history.orderLabel.number" = "Заказ №";
 "pretext.from" = "от";
-
 "pretext.in" = "в";
+
 "history.deliveryTimeLabel.inWork.delieryDate" = "Дата доставки:";
 "history.deliveryTimeLabel.inWork.address" = "Адрес доставки:";
 

@@ -12,6 +12,7 @@ final class HistoryVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = L10n.History.title
 
         view.addSubview(segmentedControl)
         view.addSubview(tableView)

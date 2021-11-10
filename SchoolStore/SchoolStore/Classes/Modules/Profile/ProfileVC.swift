@@ -174,5 +174,7 @@ class ProfileVC: UIViewController {
     private func settingBtn(_: Any) {}
 
     @objc
-    private func myOrderBtn(_: Any) {}
+    private func myOrderBtn(_: Any) {
+        tabBarController?.selectedIndex = 1
+    }
 }
